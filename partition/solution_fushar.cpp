@@ -93,51 +93,6 @@ namespace subtask2
 
 namespace subtask3
 {
-    int dp[101][1001][21];
-
-    int solve()
-    {
-        REP(i, N+1) REP(sum, 1001) REP(parts, B+1)
-            dp[i][sum][parts] = INF;
-
-        dp[1][D[0]][1] = 0;
-
-        FOR(i, 1, N+1) REP(sum, 1001) FOR(parts, 1, B+1)
-        {
-            if (dp[i][sum][parts] == INF)
-                continue;
-
-            if (i == N)
-                continue;
-
-            // take
-            if (sum + D[i] <= 1000)
-                dp[i + 1][sum + D[i]][parts] = min(dp[i + 1][sum + D[i]][parts], dp[i][sum][parts]);
-
-            // make new partition
-            if (parts + 1 <= B)
-                dp[i + 1][D[i]][parts + 1] = min(dp[i + 1][D[i]][parts + 1], sum | dp[i][sum][parts]);
-        }
-
-        int ans = INF;
-        REP(sum, 1001) FOR(parts, A, B+1)
-            ans = min(ans, sum | dp[N][sum][parts]);
-
-        return ans;
-    }
-
-    bool satisfies()
-    {
-        return true
-            && 1 <= N && N <= 100
-            && 1 <= A && A <= B && B <= min(20, N)
-            && 0 <= maxD && maxD <= 10
-        ;
-    }
-}
-
-namespace subtask4
-{
     int dp[101][1<<11];
 
     int solve()
@@ -172,7 +127,7 @@ namespace subtask4
     }
 }
 
-namespace subtask5
+namespace subtask4
 {
     bool dp[101][101];
     int ans;
@@ -223,7 +178,7 @@ namespace subtask5
     }
 }
 
-namespace subtask6
+namespace subtask5
 {
     int dp[1001];
     int ans;
@@ -279,7 +234,6 @@ function<bool()> validators[] = {
     subtask3::satisfies,
     subtask4::satisfies,
     subtask5::satisfies,
-    subtask6::satisfies
 };
 
 function<int()> solvers[] = {
@@ -288,7 +242,6 @@ function<int()> solvers[] = {
     subtask3::solve,
     subtask4::solve,
     subtask5::solve,
-    subtask6::solve
 };
 
 int main()
@@ -300,7 +253,7 @@ int main()
 
     vector<int> answers;
 
-    REP(i, 6)
+    REP(i, 5)
         if (validators[i]())
             answers.push_back(solvers[i]());
 
