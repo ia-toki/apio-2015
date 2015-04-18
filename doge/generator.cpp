@@ -124,7 +124,7 @@ protected:
 		assignToSubtasks({1, 2, 3, 4, 5, 6});
 
 		CASE(N = 1, M = 2, randomArray(1, 1));
-		CASE(N = 5, M = 3, randomArray(1, 4));
+		CASE(N = 6, M = 3, randomArray(2, 4));
 		CASE(N = 7, M = 3, randomArray(1, 9));
 		CASE(N = 10, M = 3, randomArray(1, 9));
 	}
@@ -164,6 +164,7 @@ protected:
 		CASE(N = randomInt(201, 1000), M = randomInt(20, 1000), randomArray(1, 999));
 		CASE(N = randomInt(401, 1000), M = randomInt(200, 1000), randomArray(1, 999));
 		CASE(N = randomInt(801, 1000), M = randomInt(700, 1000), randomArray(1, 999));
+		CASE(N = 1000, M = 1000, array(200, 999));
 	}
 
 	void TestGroup4()
@@ -181,6 +182,7 @@ protected:
 		CASE(N = 938, M = 9374, randomArray(1, 637));
 		CASE(N = 997, M = 9997, randomArray(1, 999));
 		CASE(N = 1000, M = 10000, randomArray(1, 999));
+		CASE(N = 1000, M = 10000, array(1, 999));
 	}
 
 	void TestGroup5()
@@ -199,6 +201,9 @@ protected:
 		CASE(N = randomInt(1001, 10000), M = randomInt(2, 10000), randomArray(1, 9999));
 		CASE(N = randomInt(1001, 10000), M = randomInt(2, 10000), randomArray(1, 9999));
 		CASE(N = 10000, M = 10000, randomArray(1, 9999));
+		CASE(N = 10000, M = 5000, array(1, 9999));
+		CASE(N = 10000, M = 10000, array(1, 9999));
+		CASE(N = 9999, M = 2, jump(4, 7));
 	}
 
 	void TestGroup6()
@@ -214,11 +219,19 @@ protected:
 		CASE(N = 23456, M = 49234, randomArray(1, 23144));
 		CASE(N = 43221, M = 42370, randomArray(1, 23482));
 		CASE(N = 49814, M = 23948, randomArray(1, 24907));
-		CASE(N = randomInt(40000, 50000), M = (40000, 50000), randomArray(23481, 23497));
-		CASE(N = randomInt(40000, 50000), M = (40000, 50000), randomArray(1, 49999));
-		CASE(N = randomInt(10001, 50000), M = (10001, 50000), randomArray(1, 49999));
-		CASE(N = randomInt(10001, 50000), M = (2, 50000), randomArray(1, 49999));
+		CASE(N = randomInt(40000, 50000), M = randomInt(40000, 50000), randomArray(23481, 23497));
+		CASE(N = randomInt(40000, 50000), M = randomInt(40000, 50000), randomArray(1, 49999));
+		CASE(N = randomInt(10001, 50000), M = randomInt(10001, 50000), randomArray(1, 49999));
+		CASE(N = randomInt(10001, 50000), M = randomInt(2, 50000), randomArray(1, 49999));
 		CASE(N = 50000, M = 50000, randomArray(1, 49999));
+		CASE(N = 50000, M = 50000, array(1, 49999));
+		CASE(N = 50000, M = 50000, array(25001, 49999));
+		CASE(N = 49999, M = 2, jump(110, 17));
+		CASE(N = 49999, M = 4, array(1, 49999));
+		CASE(N = 50000, M = 4, array(1, 49999));
+		CASE(N = 50000, M = 2471, prime(13));
+		CASE(N = 50000, M = 24711, prime(11));
+		CASE(N = 50000, M = 2, prime(10));
 	}
 
 private:
@@ -242,6 +255,59 @@ private:
 		}
 	}
 
+	void array(int l, int r)
+	{
+		B.clear();
+		P.clear();
+		B.push_back(N - 2);
+		B.push_back(1);
+		B.push_back(0);
+		B.push_back(N - 1);
+		P.push_back(2);
+		P.push_back(1);
+		P.push_back(3);
+		P.push_back(1);
+		for (int i = 4; i < M; ++i)
+		{
+			B.push_back(randomInt(0, N - 1));
+			P.push_back(randomInt(l, r));
+		}
+	}
+
+	void jump(int p0, int p1, int l = 1, int r = 49999)
+	{
+		B.clear();
+		P.clear();
+		B.push_back(p0);
+		B.push_back(p1);
+		P.push_back(2);
+		P.push_back(2);
+		for (int i = 2; i < M; ++i)
+		{
+			B.push_back(randomInt(0, N - 1));
+			P.push_back(randomInt(l, r));
+		}
+	}
+
+	void prime(int lnum)
+	{
+		int pr[] = {3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 47, 59, 67, 91};
+		B.clear();
+		P.clear();
+		B.push_back(1);
+		P.push_back(2);
+		B.push_back(0);
+		P.push_back(N - 3);
+		int last = 1, step = 2;
+		for (int i = 2; i < M; ++i)
+		{
+			int pos = randomInt(1, N / step);
+			B.push_back(pos * step);
+			P.push_back(pr[randomInt(0, lnum)]);
+			last = B.back();
+			step = P.back();
+		}
+	}
 };
 
 int main()
