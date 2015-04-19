@@ -8,24 +8,20 @@ int N, A, B;
 int D[1001];
 int maxD;
 
-const int INF = 1 << 30;
+typedef long long ll;
+
+const ll INF = 1LL << 57LL;
 
 namespace subtask1
 {
-    int ans;
-    int cuts[100], cutss[100];
+    ll ans;
 
-    void go(int pos, int parts, int sum, int orr)
+    void go(int pos, int parts, ll sum, ll orr)
     {
         if (pos == N)
         {
             if (A <= parts && parts <= B)
-            {
-                if ((sum | orr) < ans)
-                    REP(i, parts-1)
-                        cutss[i] = cuts[i];
                 ans = min(ans, sum | orr);
-            }
             return;
         }
 
@@ -33,18 +29,13 @@ namespace subtask1
         go(pos + 1, parts, sum + D[pos], orr);
 
         // make new partition
-        cuts[parts-1] = pos;
         go(pos + 1, parts + 1, D[pos], orr | sum);
     }
 
-    int solve()
+    ll solve()
     {
         ans = INF;
-
         go(1, 1, D[0], 0);
-
-        REP(i, 3)
-            printf("cuts[%d] = %d\n", i, cutss[i]);
 
         return ans;
     }
@@ -63,7 +54,7 @@ namespace subtask2
 {
     bool dp[51][1<<9][21];
 
-    int solve()
+    ll solve()
     {
         dp[0][0][0] = true;
         REP(i, N) REP(orr, 1<<9) REP(parts, B)
@@ -93,9 +84,9 @@ namespace subtask2
 
 namespace subtask3
 {
-    int dp[101][1<<11];
+    ll dp[101][1<<11];
 
-    int solve()
+    ll solve()
     {
         REP(i, N+1) REP(orr, 1<<11)
             dp[i][orr] = INF;
@@ -130,7 +121,7 @@ namespace subtask3
 namespace subtask4
 {
     bool dp[101][101];
-    int ans;
+    ll ans;
 
     bool can()
     {
@@ -139,7 +130,7 @@ namespace subtask4
         dp[0][0] = true;
         REP(i, N) REP(parts, B)
         {
-            int sum = 0;
+            ll sum = 0;
             FOR(j, i, N)
             {
                 sum += D[j];
@@ -154,15 +145,15 @@ namespace subtask4
         return false;
     }
 
-    int solve()
+    ll solve()
     {
-        ans = (1<<30) - 1;
-        for (int bit = 29; bit >= 0; bit--)
+        ans = (1LL<<57) - 1;
+        for (ll bit = 56; bit >= 0; bit--)
         {
-            ans ^= 1<<bit;
+            ans ^= 1LL<<bit;
 
             if (!can())
-                ans |= 1<<bit;
+                ans |= 1LL<<bit;
         }
 
         return ans;
@@ -180,8 +171,8 @@ namespace subtask4
 
 namespace subtask5
 {
-    int dp[1001];
-    int ans;
+    ll dp[1001];
+    ll ans;
 
     bool can()
     {
@@ -191,7 +182,7 @@ namespace subtask5
         dp[0] = 0;
         REP(i, N)
         {
-            int sum = 0;
+            ll sum = 0;
             FOR(j, i, N)
             {
                 sum += D[j];
@@ -203,15 +194,15 @@ namespace subtask5
         return dp[N] <= B;
     }
 
-    int solve()
+    ll solve()
     {
-        ans = (1<<30) - 1;
-        for (int bit = 29; bit >= 0; bit--)
+        ans = (1LL<<57) - 1;
+        for (ll bit = 56; bit >= 0; bit--)
         {
-            ans ^= 1<<bit;
+            ans ^= 1LL<<bit;
 
             if (!can())
-                ans |= 1<<bit;
+                ans |= 1LL<<bit;
         }
 
         return ans;
@@ -236,7 +227,7 @@ function<bool()> validators[] = {
     subtask5::satisfies,
 };
 
-function<int()> solvers[] = {
+function<ll()> solvers[] = {
     subtask1::solve,
     subtask2::solve,
     subtask3::solve,
@@ -251,11 +242,14 @@ int main()
         cin >> D[i];
     maxD = *max_element(D, D+N);
 
-    vector<int> answers;
+    vector<ll> answers;
 
     REP(i, 5)
         if (validators[i]())
+        {
+            //cerr << "Subtask " << (i+1) << ": " << solvers[i]() << endl;
             answers.push_back(solvers[i]());
+        }
 
     sort(answers.begin(), answers.end());
     assert(answers.front() == answers.back());
