@@ -12,7 +12,7 @@ protected:
     int N, A, B;
     vector<int> D;
 
-    int result;
+    long long result;
 
     void Config() {
         setSlug("partition");
