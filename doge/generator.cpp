@@ -2,6 +2,7 @@
 using namespace tcframe;
 
 #include <random>
+#include <bitset>
 using namespace std;
 
 class Problem : public BaseProblem
@@ -139,10 +140,8 @@ protected:
 		assignToSubtasks({2, 3, 4, 5, 6});
 
 		CASE(N = 15, M = 4, randomArray(1, 14));
-		CASE(N = 21, M = 7, randomArray(1, 20));
 		CASE(N = 37, M = 19, randomArray(1, 99));
 		CASE(N = 59, M = 48, randomArray(1, 58));
-		CASE(N = 81, M = randomInt(2, 1000), randomArray(1, 99));
 		CASE(N = 100, M = randomInt(2, 1000), randomArray(1, 99));
 		CASE(N = 100, M = 1000, randomArray(1, 99));
 	}
@@ -160,11 +159,13 @@ protected:
 		CASE(N = 442, M = randomInt(500, 1000), randomArray(1, 441));
 		CASE(N = 747, M = randomInt(500, 1000), randomArray(1, 999));
 		CASE(N = 1000, M = randomInt(500, 1000), randomArray(1, 999));
+		CASE(N = 1000, M = 1000, one());
 		CASE(N = randomInt(101, 1000), M = randomInt(2, 1000), randomArray(1, 999));
 		CASE(N = randomInt(201, 1000), M = randomInt(20, 1000), randomArray(1, 999));
 		CASE(N = randomInt(401, 1000), M = randomInt(200, 1000), randomArray(1, 999));
 		CASE(N = randomInt(801, 1000), M = randomInt(700, 1000), randomArray(1, 999));
 		CASE(N = 1000, M = 1000, array(200, 999));
+		CASE(N = 1000, M = 1000, prime());
 	}
 
 	void TestGroup4()
@@ -178,11 +179,13 @@ protected:
 
 		CASE(N = randomInt(101, 1000), M = randomInt(1001, 10000), randomArray(1, 999));
 		CASE(N = randomInt(101, 1000), M = randomInt(1001, 10000), randomArray(1, 999));
-		CASE(N = 527, M = 1237, randomArray(1, 999));
 		CASE(N = 938, M = 9374, randomArray(1, 637));
 		CASE(N = 997, M = 9997, randomArray(1, 999));
 		CASE(N = 1000, M = 10000, randomArray(1, 999));
 		CASE(N = 1000, M = 10000, array(1, 999));
+		CASE(N = 999, M = 10000, array(1, 999));
+		CASE(N = 1000, M = 10000, backback(100, 6));
+		CASE(N = 1000, M = 10000, prime());
 	}
 
 	void TestGroup5()
@@ -194,16 +197,14 @@ protected:
 
 		assignToSubtasks({5, 6});
 
-		CASE(N = 2341, M = 7334, randomArray(1, 2171));
 		CASE(N = 3274, M = 2375, randomArray(10, 2731));
 		CASE(N = 5722, M = 9239, randomArray(234, 3374));
 		CASE(N = 7423, M = 9831, randomArray(1, 9999));
-		CASE(N = randomInt(1001, 10000), M = randomInt(2, 10000), randomArray(1, 9999));
-		CASE(N = randomInt(1001, 10000), M = randomInt(2, 10000), randomArray(1, 9999));
 		CASE(N = 10000, M = 10000, randomArray(1, 9999));
 		CASE(N = 10000, M = 5000, array(1, 9999));
 		CASE(N = 10000, M = 10000, array(1, 9999));
-		CASE(N = 9999, M = 2, jump(4, 7));
+		CASE(N = 10000, M = 10000, backback(150, 2));
+		CASE(N = 10000, M = 10000, prime());
 	}
 
 	void TestGroup6()
@@ -216,22 +217,24 @@ protected:
 		assignToSubtasks({6});
 
 		CASE(N = 12345, M = 34321, randomArray(1, 2384));
-		CASE(N = 23456, M = 49234, randomArray(1, 23144));
 		CASE(N = 43221, M = 42370, randomArray(1, 23482));
-		CASE(N = 49814, M = 23948, randomArray(1, 24907));
-		CASE(N = randomInt(40000, 50000), M = randomInt(40000, 50000), randomArray(23481, 23497));
 		CASE(N = randomInt(40000, 50000), M = randomInt(40000, 50000), randomArray(1, 49999));
-		CASE(N = randomInt(10001, 50000), M = randomInt(10001, 50000), randomArray(1, 49999));
 		CASE(N = randomInt(10001, 50000), M = randomInt(2, 50000), randomArray(1, 49999));
 		CASE(N = 50000, M = 50000, randomArray(1, 49999));
+
 		CASE(N = 50000, M = 50000, array(1, 49999));
 		CASE(N = 50000, M = 50000, array(25001, 49999));
 		CASE(N = 49999, M = 2, jump(110, 17));
 		CASE(N = 49999, M = 4, array(1, 49999));
 		CASE(N = 50000, M = 4, array(1, 49999));
-		CASE(N = 50000, M = 2471, prime(13));
-		CASE(N = 50000, M = 24711, prime(11));
-		CASE(N = 50000, M = 2, prime(10));
+
+		CASE(N = 50000, M = 50000, one());
+		CASE(N = 50000, M = 2471, smallprime(13));
+		CASE(N = 50000, M = 50000, backback(10, 6));
+		CASE(N = 50000, M = 50000, backback(30, 2));
+		CASE(N = 50000, M = 50000, backback(200, 2));
+
+		CASE(N = 50000, M = 50000, prime());
 	}
 
 private:
@@ -259,14 +262,10 @@ private:
 	{
 		B.clear();
 		P.clear();
-		B.push_back(N - 2);
-		B.push_back(1);
-		B.push_back(0);
-		B.push_back(N - 1);
-		P.push_back(2);
-		P.push_back(1);
-		P.push_back(3);
-		P.push_back(1);
+		B.push_back(N - 2); P.push_back(2);
+		B.push_back(1); P.push_back(1);
+		B.push_back(0); P.push_back(3);
+		B.push_back(N - 1); P.push_back(1);
 		for (int i = 4; i < M; ++i)
 		{
 			B.push_back(randomInt(0, N - 1));
@@ -278,10 +277,8 @@ private:
 	{
 		B.clear();
 		P.clear();
-		B.push_back(p0);
-		B.push_back(p1);
-		P.push_back(2);
-		P.push_back(2);
+		B.push_back(p0); P.push_back(2);
+		B.push_back(p1); P.push_back(2);
 		for (int i = 2; i < M; ++i)
 		{
 			B.push_back(randomInt(0, N - 1));
@@ -289,15 +286,13 @@ private:
 		}
 	}
 
-	void prime(int lnum)
+	void smallprime(int lnum)
 	{
 		int pr[] = {3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 47, 59, 67, 91};
 		B.clear();
 		P.clear();
-		B.push_back(1);
-		P.push_back(2);
-		B.push_back(0);
-		P.push_back(N - 3);
+		B.push_back(1); P.push_back(2);
+		B.push_back(0); P.push_back(N - 3);
 		int last = 1, step = 2;
 		for (int i = 2; i < M; ++i)
 		{
@@ -306,6 +301,116 @@ private:
 			P.push_back(pr[randomInt(0, lnum)]);
 			last = B.back();
 			step = P.back();
+		}
+	}
+
+	void one()
+	{
+		B.clear();
+		P.clear();
+		B.push_back(0); P.push_back(1);
+		B.push_back(N - 1); P.push_back(1);
+		for (int i = 2, p = 1; i < M; ++i)
+		{
+			B.push_back(min(p, N - 1));
+			++p;
+			P.push_back(1);
+		}
+	}
+
+	void backback(int lim, int plus)
+	{
+		int tmp = M - 2;
+		bitset<50000> vis;
+		B.clear();
+		P.clear();
+		B.push_back(0); P.push_back(2);
+		int last = 0;
+		for (int i = 0; i < N; i += 2)
+		{
+			last = i;
+			vis[i] = 1;
+		}
+		B.push_back(N - 1); P.push_back(1);
+		for (int k = 0, step = 3; tmp - 2 >= 0 && k < lim; ++k, tmp -= 2)
+		{
+			B.push_back(last); P.push_back(step);
+			for (int i = last; i >= 0; i -= step)
+			{
+				if (!vis[i])
+					last = i;
+				vis[i] = 1;
+			}
+			step += plus;
+			B.push_back(last); P.push_back(step);
+			for (int i = last; i < N; i += step)
+			{
+				if (!vis[i])
+					last = i;
+				vis[i] = 1;
+			}
+		}
+		while (tmp--)
+		{
+			B.push_back(last);
+			P.push_back(1);
+		}
+	}
+
+	void prime()
+	{
+		B.clear();
+		P.clear();
+		vector<int> lp, pos;
+		bitset<50000> bs;
+		B.push_back(0); P.push_back(2);
+		for (int i = 3; i < N; i += 2)
+			if (!bs[i])
+			{
+				lp.push_back(i);
+				for (long long j = (long long) i * i; j < N; j += i + i)
+					bs[j] = 1;
+			}
+		bitset<50000> vis;
+		int last = 0;
+		for (int i = 0; i < N; i += 2)
+		{
+			last = i;
+			vis[i] = 1;
+		}
+		int tmp = M - 2;
+		for (int j = 0, sign = -1; j < (int) lp.size() && tmp > 0; ++j, --tmp, sign = -sign)
+		{
+			pos.push_back(last);
+			if (sign < 0)
+			{
+				for (int i = last; i > 0; i -= lp[j])
+					if (!vis[i])
+					{
+						last = i;
+						vis[i] = 1;
+					}
+			}
+			else
+			{
+				for (int i = last; i < N; i += lp[j])
+					if (!vis[i])
+					{
+						last = i;
+						vis[i] = 1;
+					}
+			}
+		}
+		B.push_back(last); P.push_back(1);
+		for (int j = 0; j < (int) pos.size(); ++j)
+		{
+			B.push_back(pos[j]);
+			P.push_back(lp[j]);
+		}
+		while(tmp--)
+		{
+			B.push_back(last);
+			P.push_back(1);
 		}
 	}
 };
