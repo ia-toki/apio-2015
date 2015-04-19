@@ -46,8 +46,8 @@ typedef long long ll;
 typedef double db;
 typedef vector<int> vint;
 
-const int kMaxN = 100005;
-const int kMaxAnswer = 10000005;
+const int kMaxN = 50005;
+const int kMaxAnswer = 500005;
 const int kMaxSqrtN = (int)sqrt(kMaxN) + 10;
 
 vector<int> powers[kMaxN];  // List of doges in a building.
@@ -66,16 +66,17 @@ int main_a() {
 int main() {
 #endif
   cin >> n >> m;
-  int initial = -1;
+  int initial = -1, doge1 = -1;
   FORN(i, m) {
     int building, power;
     cin >> building >> power;
     powers[building].push_back(power);
     if (!i) initial = building;
+    if (i == 1) doge1 = building;
   }
   int max_m = (int)sqrt(n);
   // The graph has two kinds of nodes:
-  // 1) (building, power) node				printf("%02hX goes in %hu to %02hX\n", (unsigned short int)a, (unsigned short int)d, (unsigned short int)other);
+  // 1) (building, power) node        printf("%02hX goes in %hu to %02hX\n", (unsigned short int)a, (unsigned short int)d, (unsigned short int)other);
   // 2) (building) node
   // We represent the second type with (building, 0).
   q[0].push(1LL * initial);
@@ -93,7 +94,7 @@ int main() {
     int power = top / n;
     if (done[building][power]) continue;
     done[building][power] = true;
-    if (building == 1) {
+    if (building == doge1) {
       if (best_answer == -1) {
         best_answer = current_answer;
       }
@@ -130,7 +131,6 @@ int main() {
   cout << best_answer << endl;
   return 0;
 }
-
 
 
 
