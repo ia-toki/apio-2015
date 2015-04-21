@@ -1,6 +1,7 @@
 #include "tcframe/tcframe.hpp"
 using namespace tcframe;
 
+#include <algorithm>
 #include <random>
 #include <bitset>
 using namespace std;
@@ -128,6 +129,8 @@ protected:
 		CASE(N = 6, M = 3, randomArray(2, 4));
 		CASE(N = 7, M = 3, randomArray(1, 9));
 		CASE(N = 10, M = 3, randomArray(1, 9));
+		CASE(N = 10, M = 3, prime());
+		CASE(N = 10, M = 3, one());
 	}
 
 	void TestGroup2()
@@ -139,11 +142,12 @@ protected:
 
 		assignToSubtasks({2, 3, 4, 5, 6});
 
-		CASE(N = 15, M = 4, randomArray(1, 14));
 		CASE(N = 37, M = 19, randomArray(1, 99));
 		CASE(N = 59, M = 48, randomArray(1, 58));
 		CASE(N = 100, M = randomInt(2, 1000), randomArray(1, 99));
 		CASE(N = 100, M = 1000, randomArray(1, 99));
+		CASE(N = 100, M = 1000, prime());
+		CASE(N = 100, M = 1000, one());
 	}
 
 	void TestGroup3()
@@ -160,11 +164,14 @@ protected:
 		CASE(N = 747, M = randomInt(500, 1000), randomArray(1, 999));
 		CASE(N = 1000, M = randomInt(500, 1000), randomArray(1, 999));
 		CASE(N = 1000, M = 1000, one());
+
 		CASE(N = randomInt(101, 1000), M = randomInt(2, 1000), randomArray(1, 999));
 		CASE(N = randomInt(201, 1000), M = randomInt(20, 1000), randomArray(1, 999));
 		CASE(N = randomInt(401, 1000), M = randomInt(200, 1000), randomArray(1, 999));
 		CASE(N = randomInt(801, 1000), M = randomInt(700, 1000), randomArray(1, 999));
 		CASE(N = 1000, M = 1000, array(200, 999));
+
+		CASE(N = 1000, M = 1000, backback(100, 2));
 		CASE(N = 1000, M = 1000, prime());
 	}
 
@@ -182,10 +189,12 @@ protected:
 		CASE(N = 938, M = 9374, randomArray(1, 637));
 		CASE(N = 997, M = 9997, randomArray(1, 999));
 		CASE(N = 1000, M = 10000, randomArray(1, 999));
+
 		CASE(N = 1000, M = 10000, array(1, 999));
 		CASE(N = 999, M = 10000, array(1, 999));
-		CASE(N = 1000, M = 10000, backback(100, 6));
+		CASE(N = 1000, M = 10000, backback(100, 2));
 		CASE(N = 1000, M = 10000, prime());
+		CASE(N = 1000, M = 10000, one());
 	}
 
 	void TestGroup5()
@@ -202,9 +211,11 @@ protected:
 		CASE(N = 7423, M = 9831, randomArray(1, 9999));
 		CASE(N = 10000, M = 10000, randomArray(1, 9999));
 		CASE(N = 10000, M = 5000, array(1, 9999));
+
 		CASE(N = 10000, M = 10000, array(1, 9999));
 		CASE(N = 10000, M = 10000, backback(150, 2));
 		CASE(N = 10000, M = 10000, prime());
+		CASE(N = 10000, M = 10000, one());
 	}
 
 	void TestGroup6()
@@ -235,6 +246,7 @@ protected:
 		CASE(N = 50000, M = 50000, backback(200, 2));
 
 		CASE(N = 50000, M = 50000, prime());
+		CASE(N = 49999, M = 50000, prime());
 	}
 
 private:
@@ -312,10 +324,11 @@ private:
 		B.push_back(N - 1); P.push_back(1);
 		for (int i = 2, p = 1; i < M; ++i)
 		{
-			B.push_back(min(p, N - 1));
+			B.push_back(min(p, N - 2));
 			++p;
 			P.push_back(1);
 		}
+		random_shuffle(B.begin() + 2, B.end());
 	}
 
 	void backback(int lim, int plus)
