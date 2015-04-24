@@ -28,7 +28,7 @@ protected:
         LINE(result);
     }
 
-    void Constraints() {
+    void commonConstraint() {
         CONS(eachElementBetween(TS, 'A', 'B'));
         CONS(eachElementBetween(TE, 'A', 'B'));
         CONS(eachElementBetween(PS, 0, 1000000000));
@@ -36,26 +36,31 @@ protected:
     }
 
     void Subtask1() {
+        commonConstraint();
         CONS(B == 1);
         CONS(1 <= N && N <= 1000);
     }
 
     void Subtask2() {
+        commonConstraint();
         CONS(B == 1);
         CONS(1 <= N && N <= 100000);
     }
 
     void Subtask3() {
+        commonConstraint();
         CONS(B == 2);
         CONS(1 <= N && N <= 100);
     }
 
     void Subtask4() {
+        commonConstraint();
         CONS(B == 2);
         CONS(1 <= N && N <= 1000);
     }
 
     void Subtask5() {
+        commonConstraint();
         CONS(B == 2);
         CONS(1 <= N && N <= 100000);
     }
@@ -100,7 +105,7 @@ protected:
             "A 5 B 7",
             "B 2 A 6",
             "B 1 A 7"
-        }, {1 ,2, 3, 4, 5});
+        }, {1 ,2});
         SAMPLE_CASE({
             "2 5",
             "B 0 A 4",
