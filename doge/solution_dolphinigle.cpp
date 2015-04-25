@@ -47,8 +47,8 @@ typedef double db;
 typedef vector<int> vint;
 
 const int kMaxN = 50005;
-const int kMaxAnswer = 500005;
 const int kMaxSqrtN = (int)sqrt(kMaxN) + 10;
+const int kMaxAnswer = kMaxN * kMaxSqrtN;
 
 vector<int> powers[kMaxN];  // List of doges in a building.
 stack<ll> q[kMaxAnswer];
@@ -94,6 +94,7 @@ int main() {
     int power = top / n;
     if (done[building][power]) continue;
     done[building][power] = true;
+
     if (building == doge1) {
       if (best_answer == -1) {
         best_answer = current_answer;
