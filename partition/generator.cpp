@@ -113,6 +113,8 @@ protected:
         assignToSubtasks({1, 2, 4});
 
         CASE(manualCase1());
+        CASE(manualCase3());
+        CASE(manualCase4());
         CASE(N = 5, A = 2, B = 3, randomArray(0,10));
         CASE(N = 10, A = 2, B = 4, randomArray(0,10));
         CASE(N = 15, A = 15, B = 15, randomArray(0,10));
@@ -195,6 +197,7 @@ protected:
         //0 <= D[i] <= 1000000000
         assignToSubtasks({4});
 
+        CASE(duplicatedCase3());
         CASE(N = 51, A = 11, B = 20, randomArray(0,1000000000));
         CASE(N = 65, A = 2, B = 10, randomArray(0,1000000000));
         CASE(N = 78, A = 2, B = 23, randomArray(0,1000000000));
@@ -313,6 +316,30 @@ private:
         A = 1;
         B = 4;
         D = {1, 2, 1, 1, 1, 0, 4, 6};
+    }
+
+    void manualCase3() {
+        N = 6; 
+        A = 6; 
+        B = 6;
+        D = {0, 0, 0, 1, 1, 2};
+    }
+
+    void manualCase4() {
+        N = 6; 
+        A = 3; 
+        B = 6;
+        D = {6, 5, 0, 0, 0, 1};
+    }
+
+    void duplicatedCase3() {
+        N = 90;
+        A = 45;
+        B = 90;
+        D.clear();
+        for (int i = 0; i < 15; ++i) {
+            D.insert(D.end(),{0, 0, 0, 1, 1, 2});
+        }
     }
 
 };
