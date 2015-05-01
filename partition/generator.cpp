@@ -53,7 +53,7 @@ protected:
     }
 
     void Subtask5() {
-        CONS(1 <= N && N <= 1000);
+        CONS(1 <= N && N <= 2000);
         CONS(A == 1);
         CONS(1 <= B && B <= N);
         CONS(eachElementBetween(D, 0, 1000000000));
@@ -212,23 +212,23 @@ protected:
         assignToSubtasks({5});
 
         CASE(N = 101, A = 1, B = 20, randomArray(0,1000000000));
-        CASE(N = 244, A = 1, B = 56, randomArray(0,1000000000));
-        CASE(N = 404, A = 1, B = 400, randomArray(0,1000000000));
         CASE(N = 575, A = 1, B = 99, randomArray(0,1000000000));
         CASE(N = 747, A = 1, B = 747, randomArray(0,1000000000));
         CASE(N = 999, A = 1, B = 20, randomArray(0,1000000000));
-        CASE(N = 1000, A = 1, B = 1, randomArray(0,1000000000));
         CASE(N = 1000, A = 1, B = 55, randomArray(0,1000000000));
-        CASE(N = 1000, A = 1, B = 1000, randomArray(0,1000000000));
+        CASE(N = 2000, A = 1, B = 1000, randomArray(0,1000000000));
+        CASE(N = 2000, A = 1, B = 2000, randomArray(0,1000000000));
         CASE(N = 101, A = 1, B = 20, randomBitArray(0,1000000000));
-        CASE(N = 244, A = 1, B = 56, randomBitArray(0,1000000000));
-        CASE(N = 404, A = 1, B = 400, randomBitArray(0,1000000000));
-        CASE(N = 575, A = 1, B = 99, randomBitArray(0,1000000000));
         CASE(N = 747, A = 1, B = 747, randomBitArray(0,1000000000));
         CASE(N = 999, A = 1, B = 20, randomBitArray(0,1000000000));
-        CASE(N = 1000, A = 1, B = 1, randomBitArray(0,1000000000));
-        CASE(N = 1000, A = 1, B = 55, randomBitArray(0,1000000000));
         CASE(N = 1000, A = 1, B = 1000, randomBitArray(0,1000000000));
+        CASE(N = 1101, A = 1, B = 20, randomBitArray(0,1000000000));
+        CASE(N = 1404, A = 1, B = 400, randomBitArray(0,1000000000));
+        CASE(N = 1747, A = 1, B = 1747, randomBitArray(0,1000000000));
+        CASE(N = 1999, A = 1, B = 20, randomBitArray(0,1000000000));
+        CASE(N = 2000, A = 1, B = 1, randomBitArray(0,1000000000));
+        CASE(N = 2000, A = 1, B = 55, randomBitArray(0,1000000000));
+        CASE(N = 2000, A = 1, B = 2000, randomBitArray(0,1000000000));
     }
 
 private:
