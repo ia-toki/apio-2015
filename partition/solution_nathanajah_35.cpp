@@ -6,7 +6,7 @@ long long d[105];
 int a, b;
 
 bool can(long long mask) {
-  int dp[1005];
+  int dp[2005];
 
   for (int i = 0; i <= n; i++) {
     dp[i] = 100000;

@@ -5,7 +5,7 @@ using namespace std;
 #define FOR(i,a,b) for (int i = a; i < b; i++)
 
 int N, A, B;
-int D[1001];
+int D[2001];
 int maxD;
 
 typedef long long ll;
@@ -171,7 +171,7 @@ namespace subtask4
 
 namespace subtask5
 {
-    ll dp[1001];
+    ll dp[2001];
     ll ans;
 
     bool can()
@@ -211,7 +211,7 @@ namespace subtask5
     bool satisfies()
     {
         return true
-            && 1 <= N && N <= 1000
+            && 1 <= N && N <= 2000
             && A == 1
             && 1 <= B && B <= N
             && 0 <= maxD && maxD <= 1000000000
