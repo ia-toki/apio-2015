@@ -47,8 +47,8 @@ typedef double db;
 typedef vector<int> vint;
 
 const int kMaxN = 50005;
-const int kMaxSqrtN = (int)sqrt(kMaxN) + 10;
-const int kMaxAnswer = kMaxN * kMaxSqrtN;
+const int kMaxSqrtN = 300;
+const int kMaxAnswer = 13000000;
 
 vector<int> powers[kMaxN];  // List of doges in a building.
 stack<ll> q[kMaxAnswer];

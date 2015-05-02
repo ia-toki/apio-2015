@@ -20,7 +20,7 @@ protected:
 	{
 		setSlug("doge");
 	}
-	
+
 	void InputFormat()
 	{
 		LINE(N, M);
@@ -36,47 +36,39 @@ protected:
 	{
 		CONS(1 <= N && N <= 10);
 		CONS(eachElementBetween(B, 0, N - 1));
-		CONS(eachElementBetween(P, 1, 9));
+		CONS(eachElementBetween(P, 1, 10));
 		CONS(2 <= M && M <= 3);
 	}
-	
+
 	void Subtask2()
 	{
 		CONS(1 <= N && N <= 100);
 		CONS(eachElementBetween(B, 0, N - 1));
-		CONS(eachElementBetween(P, 1, 99));
-		CONS(2 <= M && M <= 1000);
-	}
-	
-	void Subtask3()
-	{
-		CONS(1 <= N && N <= 1000);
-		CONS(eachElementBetween(B, 0, N - 1));
-		CONS(eachElementBetween(P, 1, 999));
-		CONS(2 <= M && M <= 1000);
-	}
-	
-	void Subtask4()
-	{
-		CONS(1 <= N && N <= 1000);
-		CONS(eachElementBetween(B, 0, N - 1));
-		CONS(eachElementBetween(P, 1, 999));
-		CONS(2 <= M && M <= 10000);
-	}
-	
-	void Subtask5()
-	{
-		CONS(1 <= N && N <= 10000);
-		CONS(eachElementBetween(B, 0, N - 1));
-		CONS(eachElementBetween(P, 1, 9999));
-		CONS(2 <= M && M <= 10000);
+		CONS(eachElementBetween(P, 1, 100));
+		CONS(2 <= M && M <= 2000);
 	}
 
-	void Subtask6()
+	void Subtask3()
+	{
+		CONS(1 <= N && N <= 2000);
+		CONS(eachElementBetween(B, 0, N - 1));
+		CONS(eachElementBetween(P, 1, 2000));
+		CONS(2 <= M && M <= 2000);
+	}
+
+	void Subtask4()
+	{
+		CONS(1 <= N && N <= 2000);
+		CONS(eachElementBetween(B, 0, N - 1));
+		CONS(eachElementBetween(P, 1, 2000));
+		CONS(2 <= M && M <= 50000);
+	}
+
+	void Subtask5()
 	{
 		CONS(1 <= N && N <= 50000);
 		CONS(eachElementBetween(B, 0, N - 1));
-		CONS(eachElementBetween(P, 1, 49999));
+		CONS(eachElementBetween(P, 1, 50000));
 		CONS(2 <= M && M <= 50000);
 	}
 
@@ -102,7 +94,7 @@ protected:
 	void Config()
 	{
 		setBaseDir("tc");
-		setSolution("./solution");
+		setSolution("./solution_dolphinigle");
 	}
 
 	void SampleTestCases()
@@ -118,126 +110,105 @@ protected:
 
 	void TestGroup1()
 	{
-		// CONS(1 <= N <= 10);
+		// CONS(1 <= N && N <= 10);
 		// CONS(eachElementBetween(B, 0, N - 1));
-		// CONS(eachElementBetween(P, 1, 9));
-  		// CONS(2 <= M <= 3);
+		// CONS(eachElementBetween(P, 1, 10));
+		// CONS(2 <= M && M <= 3);
 
-		assignToSubtasks({1, 2, 3, 4, 5, 6});
+		assignToSubtasks({1, 2, 3, 4, 5});
 
 		CASE(N = 1, M = 2, randomArray(1, 1));
 		CASE(N = 6, M = 3, randomArray(2, 4));
-		CASE(N = 7, M = 3, randomArray(1, 9));
-		CASE(N = 10, M = 3, randomArray(1, 9));
+		CASE(N = 7, M = 3, randomArray(1, 10));
+		CASE(N = 10, M = 3, randomArray(1, 10));
 		CASE(N = 10, M = 3, prime());
 		CASE(N = 10, M = 3, one());
 	}
 
 	void TestGroup2()
 	{
-		// CONS(1 <= N <= 100);
+		// CONS(1 <= N && N <= 100);
 		// CONS(eachElementBetween(B, 0, N - 1));
-		// CONS(eachElementBetween(P, 1, 99));
-		// CONS(2 <= M <= 1000);
+		// CONS(eachElementBetween(P, 1, 100));
+		// CONS(2 <= M && M <= 2000);
 
-		assignToSubtasks({2, 3, 4, 5, 6});
+		assignToSubtasks({2, 3, 4, 5});
 
-		CASE(N = 37, M = 19, randomArray(1, 99));
+		CASE(N = 37, M = 19, randomArray(1, 100));
 		CASE(N = 59, M = 48, randomArray(1, 58));
-		CASE(N = 100, M = randomInt(2, 1000), randomArray(1, 99));
-		CASE(N = 100, M = 1000, randomArray(1, 99));
-		CASE(N = 100, M = 1000, prime());
-		CASE(N = 100, M = 1000, one());
+		CASE(N = 100, M = randomInt(2, 1000), randomArray(1, 100));
+		CASE(N = 100, M = 2000, randomArray(1, 100));
+		CASE(N = 100, M = 2000, prime());
+		CASE(N = 100, M = 2000, one());
 	}
 
 	void TestGroup3()
 	{
-		// CONS(1 <= N <= 1000);
+		// CONS(1 <= N && N <= 2000);
 		// CONS(eachElementBetween(B, 0, N - 1));
-		// CONS(eachElementBetween(P, 1, 999));
-		// CONS(2 <= M <= 1000);
+		// CONS(eachElementBetween(P, 1, 2000));
+		// CONS(2 <= M && M <= 2000);
 
-		assignToSubtasks({3, 4, 5, 6});
+		assignToSubtasks({3, 4, 5});
 
-		CASE(N = 200, M = randomInt(2, 1000), randomArray(1, 199));
-		CASE(N = 442, M = randomInt(500, 1000), randomArray(1, 441));
-		CASE(N = 747, M = randomInt(500, 1000), randomArray(1, 999));
-		CASE(N = 1000, M = randomInt(500, 1000), randomArray(1, 999));
-		CASE(N = 1000, M = 1000, one());
+		CASE(N = 200, M = randomInt(2, 2000), randomArray(1, 199));
+		CASE(N = 742, M = randomInt(500, 2000), randomArray(1, 441));
+		CASE(N = 1747, M = randomInt(500, 2000), randomArray(1, 2000));
+		CASE(N = 2000, M = randomInt(500, 2000), randomArray(1, 2000));
+		CASE(N = 2000, M = 2000, one());
 
-		CASE(N = randomInt(101, 1000), M = randomInt(2, 1000), randomArray(1, 999));
-		CASE(N = randomInt(201, 1000), M = randomInt(20, 1000), randomArray(1, 999));
-		CASE(N = randomInt(401, 1000), M = randomInt(200, 1000), randomArray(1, 999));
-		CASE(N = randomInt(801, 1000), M = randomInt(700, 1000), randomArray(1, 999));
-		CASE(N = 1000, M = 1000, array(200, 999));
+		CASE(N = randomInt(101, 2000), M = randomInt(2, 2000), randomArray(1, 2000));
+		CASE(N = randomInt(201, 2000), M = randomInt(20, 2000), randomArray(1, 2000));
+		CASE(N = randomInt(1001, 2000), M = randomInt(700, 1000), randomArray(1, 2000));
+		CASE(N = randomInt(1801, 2000), M = randomInt(1500, 2000), randomArray(1, 2000));
+		CASE(N = 2000, M = 2000, array(500, 2000));
 
-		CASE(N = 1000, M = 1000, backback(100, 2));
-		CASE(N = 1000, M = 1000, prime());
+		CASE(N = 2000, M = 2000, backback(100, 2));
+		CASE(N = 2000, M = 2000, prime());
 	}
 
 	void TestGroup4()
 	{
-		// CONS(1 <= N <= 1000);
+		// CONS(1 <= N && N <= 2000);
 		// CONS(eachElementBetween(B, 0, N - 1));
-		// CONS(eachElementBetween(P, 1, 999));
-		// CONS(2 <= M <= 10000);
+		// CONS(eachElementBetween(P, 1, 2000));
+		// CONS(2 <= M && M <= 50000);
 
-		assignToSubtasks({4, 5, 6});
+		assignToSubtasks({4, 5});
 
-		CASE(N = randomInt(101, 1000), M = randomInt(1001, 10000), randomArray(1, 999));
-		CASE(N = randomInt(101, 1000), M = randomInt(1001, 10000), randomArray(1, 999));
-		CASE(N = 938, M = 9374, randomArray(1, 637));
-		CASE(N = 997, M = 9997, randomArray(1, 999));
-		CASE(N = 1000, M = 10000, randomArray(1, 999));
+		CASE(N = randomInt(1001, 2000), M = randomInt(2001, 50000), randomArray(1, 2000));
+		CASE(N = randomInt(1001, 2000), M = randomInt(2001, 50000), randomArray(1, 2000));
+		CASE(N = 1938, M = 29374, randomArray(1, 937));
+		CASE(N = 1997, M = 49997, randomArray(1, 2000));
+		CASE(N = 2000, M = 50000, randomArray(1, 2000));
 
-		CASE(N = 1000, M = 10000, array(1, 999));
-		CASE(N = 999, M = 10000, array(1, 999));
-		CASE(N = 1000, M = 10000, backback(100, 2));
-		CASE(N = 1000, M = 10000, prime());
-		CASE(N = 1000, M = 10000, one());
+		CASE(N = 2000, M = 50000, array(1, 2000));
+		CASE(N = 1999, M = 50000, array(1, 2000));
+		CASE(N = 2000, M = 50000, backback(100, 2));
+		CASE(N = 2000, M = 50000, prime());
+		CASE(N = 2000, M = 50000, one());
 	}
 
 	void TestGroup5()
 	{
-		// CONS(1 <= N <= 10000);
+		// CONS(1 <= N && N <= 50000);
 		// CONS(eachElementBetween(B, 0, N - 1));
-		// CONS(eachElementBetween(P, 1, 9999));
-		// CONS(2 <= M <= 10000);
+		// CONS(eachElementBetween(P, 1, 50000));
+		// CONS(2 <= M && M <= 50000);
 
-		assignToSubtasks({5, 6});
-
-		CASE(N = 3274, M = 2375, randomArray(10, 2731));
-		CASE(N = 5722, M = 9239, randomArray(234, 3374));
-		CASE(N = 7423, M = 9831, randomArray(1, 9999));
-		CASE(N = 10000, M = 10000, randomArray(1, 9999));
-		CASE(N = 10000, M = 5000, array(1, 9999));
-
-		CASE(N = 10000, M = 10000, array(1, 9999));
-		CASE(N = 10000, M = 10000, backback(150, 2));
-		CASE(N = 10000, M = 10000, prime());
-		CASE(N = 10000, M = 10000, one());
-	}
-
-	void TestGroup6()
-	{
-		// CONS(1 <= N <= 50000);
-		// CONS(eachElementBetween(B, 0, N - 1));
-		// CONS(eachElementBetween(P, 1, 49999));
-		// CONS(2 <= M <= 50000);
-
-		assignToSubtasks({6});
+		assignToSubtasks({5});
 
 		CASE(N = 12345, M = 34321, randomArray(1, 2384));
 		CASE(N = 43221, M = 42370, randomArray(1, 23482));
-		CASE(N = randomInt(40000, 50000), M = randomInt(40000, 50000), randomArray(1, 49999));
-		CASE(N = randomInt(10001, 50000), M = randomInt(2, 50000), randomArray(1, 49999));
-		CASE(N = 50000, M = 50000, randomArray(1, 49999));
+		CASE(N = randomInt(40000, 50000), M = randomInt(40000, 50000), randomArray(1, 50000));
+		CASE(N = randomInt(10001, 50000), M = randomInt(2, 50000), randomArray(1, 50000));
+		CASE(N = 50000, M = 50000, randomArray(1, 50000));
 
-		CASE(N = 50000, M = 50000, array(1, 49999));
-		CASE(N = 50000, M = 50000, array(25001, 49999));
+		CASE(N = 50000, M = 50000, array(1, 50000));
+		CASE(N = 50000, M = 50000, array(25001, 50000));
 		CASE(N = 49999, M = 2, jump(110, 17));
-		CASE(N = 49999, M = 4, array(1, 49999));
-		CASE(N = 50000, M = 4, array(1, 49999));
+		CASE(N = 49999, M = 4, array(1, 50000));
+		CASE(N = 50000, M = 4, array(1, 50000));
 
 		CASE(N = 50000, M = 50000, one());
 		CASE(N = 50000, M = 2471, smallprime(13));
@@ -258,7 +229,7 @@ private:
 		return dist(mt_rand);
 	}
 
-	void randomArray(int l = 1, int r = 49999)
+	void randomArray(int l = 1, int r = 50000)
 	{
 		uniform_int_distribution<int> dist(l, r);
 		B.clear();
@@ -285,7 +256,7 @@ private:
 		}
 	}
 
-	void jump(int p0, int p1, int l = 1, int r = 49999)
+	void jump(int p0, int p1, int l = 1, int r = 50000)
 	{
 		B.clear();
 		P.clear();
