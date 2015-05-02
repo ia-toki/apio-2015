@@ -51,7 +51,7 @@ const int kMaxSqrtN = 300;
 const int kMaxAnswer = 13000000;
 
 vector<int> powers[kMaxN];  // List of doges in a building.
-stack<ll> q[kMaxAnswer];
+vector<ll> q[kMaxAnswer];
 int done[kMaxN][kMaxSqrtN];
 
 int n, m;
@@ -79,7 +79,7 @@ int main() {
   // 1) (building, power) node        printf("%02hX goes in %hu to %02hX\n", (unsigned short int)a, (unsigned short int)d, (unsigned short int)other);
   // 2) (building) node
   // We represent the second type with (building, 0).
-  q[0].push(1LL * initial);
+  q[0].push_back(1LL * initial);
 
   int current_answer = 0;
   int best_answer = -1;
@@ -88,8 +88,8 @@ int main() {
       ++current_answer;
       continue;
     }
-    ll top = q[current_answer].top();
-    q[current_answer].pop();
+    ll top = q[current_answer].back();
+    q[current_answer].pop_back();
     int building = top % n;
     int power = top / n;
     if (done[building][power]) continue;
@@ -106,14 +106,14 @@ int main() {
       for (int doge : powers[building]) {
         if (doge <= max_m) {
           // go to doge!
-          q[current_answer].push(Encode(building, doge));
+          q[current_answer].push_back(Encode(building, doge));
         } else {
           // all possible locations: forward and backwards.
           for (int dir = -1; dir < 2; dir += 2) {
             for (int jumps = 1;;++jumps) {
               int pos = building + doge * dir * jumps;
               if (pos < 0 || pos >= n) break;
-              q[current_answer + jumps].push(Encode(pos, 0));
+              q[current_answer + jumps].push_back(Encode(pos, 0));
             }
           }
         }
@@ -121,12 +121,12 @@ int main() {
     } else {
       // have a power.
       // Transition to building.
-      q[current_answer].push(Encode(building, 0));
+      q[current_answer].push_back(Encode(building, 0));
       // Jump front and back.
       int pos = building + power;
-      if (pos < n) q[current_answer + 1].push(Encode(pos, power));
+      if (pos < n) q[current_answer + 1].push_back(Encode(pos, power));
       pos = building - power;
-      if (pos >= 0) q[current_answer + 1].push(Encode(pos, power));
+      if (pos >= 0) q[current_answer + 1].push_back(Encode(pos, power));
     }
   }
   cout << best_answer << endl;
