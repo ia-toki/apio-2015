@@ -2,7 +2,7 @@
 using namespace std;
 
 int n;
-long long d[105];
+long long d[2005];
 int a, b;
 
 bool can(long long mask) {
