@@ -1,4 +1,4 @@
-#include "tcframe/tcframe.hpp"
+#include "tcframe/runner.hpp"
 using namespace tcframe;
 
 #include <vector>
@@ -92,11 +92,6 @@ public:
     }
 
 protected:
-    void Config() {
-        setBaseDir("tc");
-        setSolution("./solution");
-    }
-
     void SampleTestCases() {
         SAMPLE_CASE({
             "1 5",
@@ -116,7 +111,7 @@ protected:
         }, {3, 4, 5});
     }
 
-    void TestGroup1() { 
+    void TestGroup1() {
         //K = 1
         //1 <= N <= 1000
         assignToSubtasks({1, 2});
@@ -130,7 +125,7 @@ protected:
         CASE(K = 1, N = 1000, makeArray(1000000000));
     }
 
-    void TestGroup2() { 
+    void TestGroup2() {
         //K = 1
         //1 <= N <= 100000
         assignToSubtasks({2});
@@ -141,7 +136,7 @@ protected:
         CASE(K = 1, N =  100000, makeArray(1000000000));
     }
 
-    void TestGroup3() { 
+    void TestGroup3() {
         //K = 2
         //1 <= N <= 100
         assignToSubtasks({3, 4, 5});
@@ -156,7 +151,7 @@ protected:
         CASE(K = 2, N =  100, makeArray(1000000000));
     }
 
-    void TestGroup4() { 
+    void TestGroup4() {
         //K = 2
         //1 <= N <= 1000
         assignToSubtasks({4, 5});
@@ -170,7 +165,7 @@ protected:
         CASE(K = 2, N =  1000, makeArray(1000000000));
     }
 
-    void TestGroup5() { 
+    void TestGroup5() {
         //K = 2
         //1 <= N <= 100000
         assignToSubtasks({5});
@@ -211,7 +206,9 @@ private:
 
 };
 
-int main() {
-    Generator gen;
-    return gen.generate();
+int main(int argc, char* argv[]) {
+    Runner<Problem> runner(argc, argv);
+    runner.setGenerator(new Generator());
+
+    return runner.run();
 }

@@ -1,4 +1,4 @@
-#include "tcframe/tcframe.hpp"
+#include "tcframe/runner.hpp"
 using namespace tcframe;
 
 #include <vector>
@@ -77,11 +77,6 @@ public:
     }
 
 protected:
-    void Config() {
-        setBaseDir("tc");
-        setSolution("./solution");
-    }
-
     void SampleTestCases() {
         SAMPLE_CASE({
             "5 1 2",
@@ -89,7 +84,7 @@ protected:
         }, {1 ,2, 3, 4, 5});
     }
 
-    void TestGroup1() { 
+    void TestGroup1() {
         //1 <= N <= 20
         //A = 1, 1 <= B <= N
         //0 <= D[i] <= 10
@@ -319,15 +314,15 @@ private:
     }
 
     void manualCase3() {
-        N = 6; 
-        A = 6; 
+        N = 6;
+        A = 6;
         B = 6;
         D = {0, 0, 0, 1, 1, 2};
     }
 
     void manualCase4() {
-        N = 6; 
-        A = 3; 
+        N = 6;
+        A = 3;
         B = 6;
         D = {6, 5, 0, 0, 0, 1};
     }
@@ -344,7 +339,9 @@ private:
 
 };
 
-int main() {
-    Generator gen;
-    return gen.generate();
+int main(int argc, char* argv[]) {
+    Runner<Problem> runner(argc, argv);
+    runner.setGenerator(new Generator());
+
+    return runner.run();
 }

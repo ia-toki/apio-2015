@@ -1,4 +1,4 @@
-#include "tcframe/tcframe.hpp"
+#include "tcframe/runner.hpp"
 using namespace tcframe;
 
 #include <algorithm>
@@ -91,12 +91,6 @@ public:
 	}
 
 protected:
-	void Config()
-	{
-		setBaseDir("tc");
-		setSolution("./solution_dolphinigle");
-	}
-
 	void SampleTestCases()
 	{
 		SAMPLE_CASE
@@ -105,7 +99,7 @@ protected:
 			"0 2",
 			"1 1",
 			"4 1"
-		}, {1, 2, 3, 4, 5, 6});
+		}, {1, 2, 3, 4, 5});
 	}
 
 	void TestGroup1()
@@ -399,8 +393,10 @@ private:
 	}
 };
 
-int main()
+int main(int argc, char* argv[])
 {
-    Generator gen;
-    return gen.generate();
+	Runner<Problem> runner(argc, argv);
+	runner.setGenerator(new Generator());
+
+	return runner.run();
 }
