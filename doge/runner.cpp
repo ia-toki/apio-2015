@@ -212,6 +212,12 @@ protected:
 
 		CASE(N = 50000, M = 50000, prime());
 		CASE(N = 49999, M = 50000, prime());
+    CASE(sqrtN(100, 400));
+    CASE(sqrtN(200, 600));
+    CASE(sqrtN(200, 450));
+    CASE(sqrtN(100, 350));
+    CASE(lotsOfEdges(false));
+    CASE(lotsOfEdges(true));
 	}
 
 private:
@@ -262,6 +268,137 @@ private:
 			P.push_back(randomInt(l, r));
 		}
 	}
+
+  void sqrtN(int minval, int maxval, bool alledges = false)
+  {
+    B.clear();
+    P.clear();
+    int kMaxN = 30000;
+    vector <pair<int,int> > doges;
+    vector <bool> bads;
+    for (int i = 0; i < kMaxN; i++) {
+      bads.push_back(false);
+    }
+
+    int badcnt= 0;
+    vector <pair<int,int> > values;
+    for (int i = minval; i <= maxval; i++) {
+      for (int j = 0; j < i; j++) {
+        values.push_back(make_pair(i,j));
+      }
+    }
+    shuffle(values.begin(), values.end(), mt_rand);
+    for (int k = 0; k < (int) values.size(); k++) {
+      int pw = values[k].first;
+      int i = values[k].second;
+      if ((int)doges.size() == kMaxN-2) {
+        break;
+      }
+      int mycnt = 0;
+      for (int j = i; j < kMaxN; j+=pw) {
+        if(j >= kMaxN/2) {
+          if (!bads[j]) {
+            mycnt++;
+          }
+        }
+      }
+      if (mycnt + badcnt == kMaxN / 2) {
+        continue;
+      }
+      doges.push_back(make_pair(i,pw));
+      for (int j = i; j < kMaxN; j+=pw) {
+        if (j >= kMaxN/2) {
+          if (!bads[j]) {
+            badcnt += 1;
+            bads[j] = true;
+          }
+        }
+      }
+    }
+    pair <int,int> targ;
+    if (alledges) {
+      targ = make_pair(kMaxN-1, 1);
+    } else {
+      int j = kMaxN - 1;
+      while (j >= 0) {
+        if (!bads[j]) {
+          targ = make_pair(j, 1);
+          break;
+        }
+        j--;
+      }
+    }
+    shuffle(doges.begin(), doges.end(), mt_rand);
+    B.push_back(0);
+    P.push_back(1);
+    B.push_back(targ.first);
+    P.push_back(targ.second);
+    for (pair<int,int> doge : doges) {
+      B.push_back(doge.first);
+      P.push_back(doge.second);
+    }
+    N = kMaxN;
+    M = (int)B.size();
+  }
+
+  void lotsOfEdges(bool alledges) {
+    B.clear();
+    P.clear();
+    int kMaxN = 30000;
+    vector <pair<int,int> > doges;
+    vector<bool> bads = vector<bool>(kMaxN, false);
+    int badcnt = 0;
+    for (int pw = 2; pw < kMaxN; pw++) {
+      if ((int)doges.size() == kMaxN - 2) {
+        break;
+      }
+      for (int i = 0; i < pw; i++) {
+        if ((int)doges.size() == kMaxN - 2) {
+          break;
+        }
+        int mycnt = 0;
+        for (int j = i; j < kMaxN; j+=pw) {
+          if (!bads[j]) {
+            mycnt++;
+          }
+        }
+        if (mycnt + badcnt == kMaxN) {
+          continue;
+        }
+        doges.push_back(make_pair(i, pw));
+        for (int j = i; j < kMaxN; j+=pw) {
+          if (!bads[j]) {
+            badcnt++;
+            bads[j] = true;
+          }
+        }
+      }
+    }
+    pair <int,int> targ;
+    if (alledges) {
+      targ = make_pair(kMaxN-1, 1);
+    } else {
+      int j = kMaxN - 1;
+      while (j >= 0) {
+        if (!bads[j]) {
+          targ = make_pair(j, 1);
+          break;
+        }
+        j--;
+      }
+    }
+    shuffle(doges.begin(), doges.end(), mt_rand);
+    B.push_back(0);
+    P.push_back(1);
+    B.push_back(targ.first);
+    P.push_back(targ.second);
+    for (pair<int,int> doge : doges) {
+      B.push_back(doge.first);
+      P.push_back(doge.second);
+    }
+    N = kMaxN;
+    M = (int)B.size();
+  }
 
 	void smallprime(int lnum)
 	{
