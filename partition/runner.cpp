@@ -99,6 +99,7 @@ protected:
         CASE(N = 20, A = 1, B = 3, randomArray(0,10));
         CASE(N = 20, A = 1, B = 3, randomArray(8,10));
         CASE(N = 20, A = 1, B = 3, randomArray(10,10));
+        CASE(N = 20, A = 1, B = 1, randomArray(10,10));
         CASE(N = 20, A = 1, B = 3, randomBitArray(0,10));
         CASE(N = 20, A = 1, B = 17, randomBitArray(0,10));
     }
@@ -119,6 +120,7 @@ protected:
         CASE(N = 20, A = 4, B = 7, randomArray(0,10));
         CASE(N = 20, A = 4, B = 7, randomArray(8,10));
         CASE(N = 20, A = 4, B = 7, randomArray(10,10));
+        CASE(N = 20, A = 2, B = 2, randomArray(10,10));
         CASE(N = 20, A = 2, B = 7, randomBitArray(0,10));
         CASE(N = 20, A = 5, B = 13, randomBitArray(0,10));
     }
@@ -136,6 +138,7 @@ protected:
         CASE(N = 20, A = 1, B = 7, randomArray(21,1000000000));
         CASE(N = 20, A = 1, B = 7, randomArray(999999000,1000000000));
         CASE(N = 20, A = 1, B = 7, randomArray(1000000000,1000000000));
+        CASE(N = 20, A = 1, B = 1, randomArray(1000000000,1000000000));
         CASE(N = 20, A = 1, B = 7, randomBitArray(21,1000000000));
         CASE(N = 20, A = 1, B = 13, randomBitArray(21,1000000000));
         CASE(N = 20, A = 1, B = 20, randomBitArray(21,1000000000));
@@ -156,6 +159,7 @@ protected:
         CASE(N = 50, A = 1, B = 20, randomArray(0,10));
         CASE(N = 50, A = 1, B = 20, randomArray(8,10));
         CASE(N = 50, A = 1, B = 20, randomArray(10,10));
+        CASE(N = 50, A = 1, B = 1, randomArray(10,10));
         CASE(N = 50, A = 1, B = 20, randomBitArray(0,10));
         CASE(N = 50, A = 1, B = 17, randomBitArray(0,10));
         CASE(N = 50, A = 1, B = 10, randomBitArray(0,10));
@@ -174,6 +178,7 @@ protected:
         CASE(N = 100, A = 1, B = 100, randomArray(0,20));
         CASE(N = 100, A = 1, B = 100, randomArray(16,20));
         CASE(N = 100, A = 1, B = 100, randomArray(20,20));
+        CASE(N = 100, A = 1, B = 1, randomArray(20,20));
         CASE(N = 100, A = 1, B = 47, randomBitArray(0,20));
         CASE(N = 100, A = 1, B = 74, randomBitArray(0,20));
         CASE(N = 100, A = 1, B = 47, randomBitArray(0,20));
@@ -193,6 +198,7 @@ protected:
         CASE(N = 100, A = 1, B = 100, randomArray(0,1000000000));
         CASE(N = 100, A = 1, B = 100, randomArray(999999000,1000000000));
         CASE(N = 100, A = 1, B = 100, randomArray(1000000000,1000000000));
+        CASE(N = 100, A = 1, B = 1, randomArray(1000000000,1000000000));
         CASE(N = 100, A = 1, B = 100, randomBitArray(0,1000000000));
         CASE(N = 100, A = 1, B = 100, randomBitArray(0,1000000000));
         CASE(N = 100, A = 1, B = 100, randomBitArray(0,1000000000));
@@ -212,6 +218,7 @@ protected:
         CASE(N = 100, A = 57, B = 100, randomArray(0,1000000000));
         CASE(N = 100, A = 57, B = 100, randomArray(999999000,1000000000));
         CASE(N = 100, A = 57, B = 100, randomArray(1000000000,1000000000));
+        CASE(N = 100, A = 2, B = 2, randomArray(1000000000,1000000000));
         CASE(N = 100, A = 2, B = 100, randomBitArray(0,1000000000));
         CASE(N = 100, A = 47, B = 74, randomBitArray(0,1000000000));
         CASE(N = 100, A = 33, B = 66, randomBitArray(0,1000000000));
@@ -232,6 +239,7 @@ protected:
         CASE(N = 2000, A = 1, B = 2000, randomArray(0,1000000000));
         CASE(N = 2000, A = 1, B = 2000, randomArray(999999000,1000000000));
         CASE(N = 2000, A = 1, B = 2000, randomArray(1000000000,1000000000));
+        CASE(N = 2000, A = 1, B = 1, randomArray(1000000000,1000000000));
         CASE(N = 101, A = 1, B = 20, randomBitArray(0,1000000000));
         CASE(N = 747, A = 1, B = 747, randomBitArray(0,1000000000));
         CASE(N = 999, A = 1, B = 20, randomBitArray(0,1000000000));
