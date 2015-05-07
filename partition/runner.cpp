@@ -79,8 +79,8 @@ public:
 protected:
     void SampleTestCases() {
         SAMPLE_CASE({
-            "5 1 2",
-            "0 1 5 3 4"
+            "6 1 3",
+            "8 1 2 1 5 4"
         }, {1 ,2, 3, 4, 5});
     }
 
@@ -135,11 +135,8 @@ protected:
         CASE(N = 10, A = 1, B = 4, randomArray(21,1000000000));
         CASE(N = 13, A = 1, B = 13, randomArray(21,1000000000));
         CASE(N = 19, A = 1, B = 3, randomArray(21,1000000000));
-        CASE(N = 20, A = 1, B = 7, randomArray(21,1000000000));
-        CASE(N = 20, A = 1, B = 7, randomArray(999999000,1000000000));
         CASE(N = 20, A = 1, B = 7, randomArray(1000000000,1000000000));
         CASE(N = 20, A = 1, B = 1, randomArray(1000000000,1000000000));
-        CASE(N = 20, A = 1, B = 7, randomBitArray(21,1000000000));
         CASE(N = 20, A = 1, B = 13, randomBitArray(21,1000000000));
         CASE(N = 20, A = 1, B = 20, randomBitArray(21,1000000000));
         CASE(N = 20, A = 1, B = 3, randomBitArrayDifferent(21,1000000000));
@@ -156,7 +153,6 @@ protected:
         CASE(N = 25, A = 1, B = 10, randomArray(0,10));
         CASE(N = 38, A = 1, B = 5, randomArray(0,10));
         CASE(N = 42, A = 1, B = 18, randomArray(0,10));
-        CASE(N = 50, A = 1, B = 20, randomArray(0,10));
         CASE(N = 50, A = 1, B = 20, randomArray(8,10));
         CASE(N = 50, A = 1, B = 20, randomArray(10,10));
         CASE(N = 50, A = 1, B = 1, randomArray(10,10));
@@ -176,11 +172,8 @@ protected:
         CASE(N = 78, A = 1, B = 23, randomArray(0,20));
         CASE(N = 91, A = 1, B = 55, randomArray(0,20));
         CASE(N = 100, A = 1, B = 100, randomArray(0,20));
-        CASE(N = 100, A = 1, B = 100, randomArray(16,20));
         CASE(N = 100, A = 1, B = 100, randomArray(20,20));
         CASE(N = 100, A = 1, B = 1, randomArray(20,20));
-        CASE(N = 100, A = 1, B = 47, randomBitArray(0,20));
-        CASE(N = 100, A = 1, B = 74, randomBitArray(0,20));
         CASE(N = 100, A = 1, B = 47, randomBitArray(0,20));
         CASE(N = 100, A = 1, B = 74, randomBitArray(0,20));
     }
@@ -192,14 +185,11 @@ protected:
         assignToSubtasks({4, 5});
 
         CASE(N = 51, A = 1, B = 20, randomArray(0,1000000000));
-        CASE(N = 65, A = 1, B = 10, randomArray(0,1000000000));
         CASE(N = 78, A = 1, B = 23, randomArray(0,1000000000));
         CASE(N = 91, A = 1, B = 55, randomArray(0,1000000000));
         CASE(N = 100, A = 1, B = 100, randomArray(0,1000000000));
-        CASE(N = 100, A = 1, B = 100, randomArray(999999000,1000000000));
         CASE(N = 100, A = 1, B = 100, randomArray(1000000000,1000000000));
         CASE(N = 100, A = 1, B = 1, randomArray(1000000000,1000000000));
-        CASE(N = 100, A = 1, B = 100, randomBitArray(0,1000000000));
         CASE(N = 100, A = 1, B = 100, randomBitArray(0,1000000000));
         CASE(N = 100, A = 1, B = 100, randomBitArray(0,1000000000));
     }
@@ -216,7 +206,6 @@ protected:
         CASE(N = 78, A = 2, B = 23, randomArray(0,1000000000));
         CASE(N = 91, A = 19, B = 55, randomArray(0,1000000000));
         CASE(N = 100, A = 57, B = 100, randomArray(0,1000000000));
-        CASE(N = 100, A = 57, B = 100, randomArray(999999000,1000000000));
         CASE(N = 100, A = 57, B = 100, randomArray(1000000000,1000000000));
         CASE(N = 100, A = 2, B = 2, randomArray(1000000000,1000000000));
         CASE(N = 100, A = 2, B = 100, randomBitArray(0,1000000000));
@@ -244,10 +233,8 @@ protected:
         CASE(N = 747, A = 1, B = 747, randomBitArray(0,1000000000));
         CASE(N = 999, A = 1, B = 20, randomBitArray(0,1000000000));
         CASE(N = 1000, A = 1, B = 1000, randomBitArray(0,1000000000));
-        CASE(N = 1101, A = 1, B = 20, randomBitArray(0,1000000000));
         CASE(N = 1404, A = 1, B = 400, randomBitArray(0,1000000000));
         CASE(N = 1747, A = 1, B = 1747, randomBitArray(0,1000000000));
-        CASE(N = 1999, A = 1, B = 20, randomBitArray(0,1000000000));
         CASE(N = 2000, A = 1, B = 1, randomBitArray(0,1000000000));
         CASE(N = 2000, A = 1, B = 55, randomBitArray(0,1000000000));
         CASE(N = 2000, A = 1, B = 2000, randomBitArray(0,1000000000));

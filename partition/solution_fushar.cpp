@@ -246,10 +246,7 @@ int main()
 
     REP(i, 5)
         if (validators[i]())
-        {
-            //cerr << "Subtask " << (i+1) << ": " << solvers[i]() << endl;
             answers.push_back(solvers[i]());
-        }
 
     sort(answers.begin(), answers.end());
     assert(answers.front() == answers.back());
