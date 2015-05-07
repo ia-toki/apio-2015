@@ -46,9 +46,9 @@ typedef long long ll;
 typedef double db;
 typedef vector<int> vint;
 
-const int kMaxN = 50005;
-const int kMaxSqrtN = 300;
-const int kMaxAnswer = 13000000;
+const int kMaxN = 30005;
+const int kMaxSqrtN = 200;
+const int kMaxAnswer = 5000000;
 
 vector<int> powers[kMaxN];  // List of doges in a building.
 vector<ll> q[kMaxAnswer];

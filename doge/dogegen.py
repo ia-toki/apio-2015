@@ -28,7 +28,7 @@ def Worst():
   def AddLoc(pos):
     for j in range(2, kMaxPow):
       bads.add((j, pos%j))
-  while len(dogeposes) < 30000:
+  while len(dogeposes) < kMaxN / 2:
     found = False
     for j in range(2, kMaxN):
       if j < kMaxPow:
@@ -52,7 +52,6 @@ def Worst():
         found = True
         targ = k
       if found:
-        print len(dogeposes), posdog, j
         AddLoc(posdog)
         posdog = targ
         dogeposes.append((posdog, j))
@@ -63,7 +62,7 @@ def Worst():
     if not found:
       break
   middlemen = dogeposes[1:-1]
-  for j in range(50000):
+  for j in range(kMaxN):
     if not touched[j]:
       middlemen.append((j, kMaxN-1))
   random.shuffle(middlemen)
@@ -148,12 +147,12 @@ def Gen():
   printer = DogePrint()
   #printer.Print([(i, 1) for i in range(kMaxN)])
   dogepowers = [(i, 1) for i in range(kMaxN)]
-  '''
+
   printer.Print(dogepowers[:1] + dogepowers[-1:] + dogepowers[1:-1])
   printer.Print(Worst())
   printer.Print(LotsOfEdges(True))
   printer.Print(LotsOfEdges(False))
-  '''
+
   printer.Print(SqrtN())
   printer.Print(SqrtN(200, 600))
   printer.Print(SqrtN(200, 450))
