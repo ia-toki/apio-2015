@@ -119,20 +119,9 @@ protected:
         CASE(K = 1, N = 1, makeArray(1000000000));
         CASE(K = 1, N = 4, makeArray(100));
         CASE(K = 1, N = 1000, makeArray(1));
-        CASE(K = 1, N = 1000, makeArray(100));
         CASE(K = 1, N = 1000, makeArray(1000000));
         CASE(K = 1, N = 967, makeArray(1000000000));
-        CASE(K = 1, N = 1000, makeArray(1000000000));
-        CASE(K = 1, N = randomIntBetween(1,1000), makeArray(1));
-        CASE(K = 1, N = randomIntBetween(1,1000), makeArray(100));
-        CASE(K = 1, N = randomIntBetween(1,1000), makeArray(1000000));
 
-        CASE(K = 1, N =  randomIntBetween(1,1000), allCrossingFullInterval(1000000));
-        CASE(K = 1, N =  randomIntBetween(1,1000), allCrossingNoIntersect(1000000));
-        CASE(K = 1, N =  randomIntBetween(1,1000), allCrossingAllOverlap(1000000));
-        CASE(K = 1, N =  randomIntBetween(1,1000), allCrossingSmallInterval(1000000));
-        CASE(K = 1, N =  randomIntBetween(1,1000), allCrossingDivideIntoThree(1000000));
-        CASE(K = 1, N =  randomIntBetween(1,1000), allCrossingDivideIntoThreeShiftOne(1000000));
         CASE(K = 1, N =  1000, allCrossingFullInterval(1000000000));
         CASE(K = 1, N =  1000, allCrossingNoIntersect(1000000000));
         CASE(K = 1, N =  1000, allCrossingAllOverlap(1000000000));
@@ -147,20 +136,10 @@ protected:
         assignToSubtasks({2});
 
         CASE(K = 1, N =  100000, makeArray(1));
-        CASE(K = 1, N =  100000, makeArray(100));
-        CASE(K = 1, N =  100000, makeArray(1000000));
         CASE(K = 1, N =  100000, makeArray(1000000000));
-        CASE(K = 1, N =  randomIntBetween(1001,100000), makeArray(1));
-        CASE(K = 1, N =  randomIntBetween(1001,100000), makeArray(100));
-        CASE(K = 1, N =  randomIntBetween(1001,100000), makeArray(1000000));
+        CASE(K = 1, N =  randomIntBetween(1001,100000), makeArray(10000));
         CASE(K = 1, N =  randomIntBetween(1001,100000), makeArray(1000000000));
 
-        CASE(K = 1, N =  randomIntBetween(1001,100000), allCrossingFullInterval(1000000));
-        CASE(K = 1, N =  randomIntBetween(1001,100000), allCrossingNoIntersect(1000000));
-        CASE(K = 1, N =  randomIntBetween(1001,100000), allCrossingAllOverlap(1000000));
-        CASE(K = 1, N =  randomIntBetween(1001,100000), allCrossingSmallInterval(1000000));
-        CASE(K = 1, N =  randomIntBetween(1001,100000), allCrossingDivideIntoThree(1000000));
-        CASE(K = 1, N =  randomIntBetween(1001,100000), allCrossingDivideIntoThreeShiftOne(1000000));
         CASE(K = 1, N =  100000, allCrossingFullInterval(1000000000));
         CASE(K = 1, N =  100000, allCrossingNoIntersect(1000000000));
         CASE(K = 1, N =  100000, allCrossingAllOverlap(1000000000));
@@ -177,24 +156,10 @@ protected:
         CASE(K = 2, N =  1, makeArray(1000000000));
         CASE(K = 2, N =  4, makeArray(100));
         CASE(K = 2, N =  100, makeArray(1));
-        CASE(K = 2, N =  100, makeArray(100));
-        CASE(K = 2, N =  100, makeArray(1000000));
-        CASE(K = 2, N =  87, makeArray(1000000000));
         CASE(K = 2, N =  100, makeArray(1000000000));
-        CASE(K = 2, N =  100, makeArray(1000000000));
-        CASE(K = 2, N =  randomIntBetween(1,100), makeArray(1));
-        CASE(K = 2, N =  randomIntBetween(1,100), makeArray(100));
         CASE(K = 2, N =  randomIntBetween(1,100), makeArray(1000000));
-        CASE(K = 2, N =  randomIntBetween(1,87), makeArray(1000000000));
-        CASE(K = 2, N =  randomIntBetween(1,100), makeArray(1000000000));
         CASE(K = 2, N =  randomIntBetween(1,100), makeArray(1000000000));
 
-        CASE(K = 2, N =  randomIntBetween(1,100), allCrossingFullInterval(1000000));
-        CASE(K = 2, N =  randomIntBetween(1,100), allCrossingNoIntersect(1000000));
-        CASE(K = 2, N =  randomIntBetween(1,100), allCrossingAllOverlap(1000000));
-        CASE(K = 2, N =  randomIntBetween(1,100), allCrossingSmallInterval(1000000));
-        CASE(K = 2, N =  randomIntBetween(1,100), allCrossingDivideIntoThree(1000000));
-        CASE(K = 2, N =  randomIntBetween(1,100), allCrossingDivideIntoThreeShiftOne(1000000));
         CASE(K = 2, N =  100, allCrossingFullInterval(1000000000));
         CASE(K = 2, N =  100, allCrossingNoIntersect(1000000000));
         CASE(K = 2, N =  100, allCrossingAllOverlap(1000000000));
@@ -210,22 +175,11 @@ protected:
 
         CASE(K = 2, N =  1000, makeArray(1));
         CASE(K = 2, N =  1000, makeArray(100));
-        CASE(K = 2, N =  1000, makeArray(10000));
-        CASE(K = 2, N =  1000, makeArray(1000000));
         CASE(K = 2, N =  993, makeArray(1000000000));
-        CASE(K = 2, N =  958, makeArray(1000000000));
-        CASE(K = 2, N =  1000, makeArray(1000000000));
         CASE(K = 2, N =  randomIntBetween(101,1000), makeArray(1));
         CASE(K = 2, N =  randomIntBetween(101,1000), makeArray(100));
-        CASE(K = 2, N =  randomIntBetween(101,1000), makeArray(10000));
         CASE(K = 2, N =  randomIntBetween(101,1000), makeArray(1000000));
 
-        CASE(K = 2, N =  randomIntBetween(101,1000), allCrossingFullInterval(1000000));
-        CASE(K = 2, N =  randomIntBetween(101,1000), allCrossingNoIntersect(1000000));
-        CASE(K = 2, N =  randomIntBetween(101,1000), allCrossingAllOverlap(1000000));
-        CASE(K = 2, N =  randomIntBetween(101,1000), allCrossingSmallInterval(1000000));
-        CASE(K = 2, N =  randomIntBetween(101,1000), allCrossingDivideIntoThree(1000000));
-        CASE(K = 2, N =  randomIntBetween(101,1000), allCrossingDivideIntoThreeShiftOne(1000000));
         CASE(K = 2, N =  1000, allCrossingFullInterval(1000000000));
         CASE(K = 2, N =  1000, allCrossingNoIntersect(1000000000));
         CASE(K = 2, N =  1000, allCrossingAllOverlap(1000000000));
@@ -243,17 +197,9 @@ protected:
         CASE(K = 2, N =  100000, makeArray(100));
         CASE(K = 2, N =  100000, makeArray(1000000));
         CASE(K = 2, N =  100000, makeArray(1000000000));
-        CASE(K = 2, N =  randomIntBetween(1001,100000), makeArray(1));
-        CASE(K = 2, N =  randomIntBetween(1001,100000), makeArray(100));
-        CASE(K = 2, N =  randomIntBetween(1001,100000), makeArray(1000000));
+        CASE(K = 2, N =  100000, makeArray(1000000000));
         CASE(K = 2, N =  randomIntBetween(1001,100000), makeArray(1000000000));
 
-        CASE(K = 2, N =  randomIntBetween(1001,100000), allCrossingFullInterval(1000000000));
-        CASE(K = 2, N =  randomIntBetween(1001,100000), allCrossingNoIntersect(1000000000));
-        CASE(K = 2, N =  randomIntBetween(1001,100000), allCrossingAllOverlap(1000000000));
-        CASE(K = 2, N =  randomIntBetween(1001,100000), allCrossingSmallInterval(1000000000));
-        CASE(K = 2, N =  randomIntBetween(1001,100000), allCrossingDivideIntoThree(1000000000));
-        CASE(K = 2, N =  randomIntBetween(1001,100000), allCrossingDivideIntoThreeShiftOne(1000000000));
         CASE(K = 2, N =  100000, allCrossingFullInterval(1000000000));
         CASE(K = 2, N =  100000, allCrossingNoIntersect(1000000000));
         CASE(K = 2, N =  100000, allCrossingAllOverlap(1000000000));
