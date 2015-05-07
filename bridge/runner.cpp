@@ -131,10 +131,14 @@ protected:
         CASE(K = 1, N =  randomIntBetween(1,1000), allCrossingNoIntersect(1000000));
         CASE(K = 1, N =  randomIntBetween(1,1000), allCrossingAllOverlap(1000000));
         CASE(K = 1, N =  randomIntBetween(1,1000), allCrossingSmallInterval(1000000));
+        CASE(K = 1, N =  randomIntBetween(1,1000), allCrossingDivideIntoThree(1000000));
+        CASE(K = 1, N =  randomIntBetween(1,1000), allCrossingDivideIntoThreeShiftOne(1000000));
         CASE(K = 1, N =  1000, allCrossingFullInterval(1000000000));
         CASE(K = 1, N =  1000, allCrossingNoIntersect(1000000000));
         CASE(K = 1, N =  1000, allCrossingAllOverlap(1000000000));
         CASE(K = 1, N =  1000, allCrossingSmallInterval(1000000000));
+        CASE(K = 1, N =  1000, allCrossingDivideIntoThree(1000000000));
+        CASE(K = 1, N =  1000, allCrossingDivideIntoThreeShiftOne(1000000000));
     }
 
     void TestGroup2() {
@@ -155,10 +159,14 @@ protected:
         CASE(K = 1, N =  randomIntBetween(1001,100000), allCrossingNoIntersect(1000000));
         CASE(K = 1, N =  randomIntBetween(1001,100000), allCrossingAllOverlap(1000000));
         CASE(K = 1, N =  randomIntBetween(1001,100000), allCrossingSmallInterval(1000000));
+        CASE(K = 1, N =  randomIntBetween(1001,100000), allCrossingDivideIntoThree(1000000));
+        CASE(K = 1, N =  randomIntBetween(1001,100000), allCrossingDivideIntoThreeShiftOne(1000000));
         CASE(K = 1, N =  100000, allCrossingFullInterval(1000000000));
         CASE(K = 1, N =  100000, allCrossingNoIntersect(1000000000));
         CASE(K = 1, N =  100000, allCrossingAllOverlap(1000000000));
         CASE(K = 1, N =  100000, allCrossingSmallInterval(1000000000));
+        CASE(K = 1, N =  100000, allCrossingDivideIntoThree(1000000000));
+        CASE(K = 1, N =  100000, allCrossingDivideIntoThreeShiftOne(1000000000));
     }
 
     void TestGroup3() {
@@ -185,10 +193,14 @@ protected:
         CASE(K = 2, N =  randomIntBetween(1,100), allCrossingNoIntersect(1000000));
         CASE(K = 2, N =  randomIntBetween(1,100), allCrossingAllOverlap(1000000));
         CASE(K = 2, N =  randomIntBetween(1,100), allCrossingSmallInterval(1000000));
+        CASE(K = 2, N =  randomIntBetween(1,100), allCrossingDivideIntoThree(1000000));
+        CASE(K = 2, N =  randomIntBetween(1,100), allCrossingDivideIntoThreeShiftOne(1000000));
         CASE(K = 2, N =  100, allCrossingFullInterval(1000000000));
         CASE(K = 2, N =  100, allCrossingNoIntersect(1000000000));
         CASE(K = 2, N =  100, allCrossingAllOverlap(1000000000));
         CASE(K = 2, N =  100, allCrossingSmallInterval(1000000000));
+        CASE(K = 2, N =  100, allCrossingDivideIntoThree(1000000000));
+        CASE(K = 2, N =  100, allCrossingDivideIntoThreeShiftOne(1000000000));
     }
 
     void TestGroup4() {
@@ -212,10 +224,14 @@ protected:
         CASE(K = 2, N =  randomIntBetween(101,1000), allCrossingNoIntersect(1000000));
         CASE(K = 2, N =  randomIntBetween(101,1000), allCrossingAllOverlap(1000000));
         CASE(K = 2, N =  randomIntBetween(101,1000), allCrossingSmallInterval(1000000));
+        CASE(K = 2, N =  randomIntBetween(101,1000), allCrossingDivideIntoThree(1000000));
+        CASE(K = 2, N =  randomIntBetween(101,1000), allCrossingDivideIntoThreeShiftOne(1000000));
         CASE(K = 2, N =  1000, allCrossingFullInterval(1000000000));
         CASE(K = 2, N =  1000, allCrossingNoIntersect(1000000000));
         CASE(K = 2, N =  1000, allCrossingAllOverlap(1000000000));
         CASE(K = 2, N =  1000, allCrossingSmallInterval(1000000000));
+        CASE(K = 2, N =  1000, allCrossingDivideIntoThree(1000000000));
+        CASE(K = 2, N =  1000, allCrossingDivideIntoThreeShiftOne(1000000000));
     }
 
     void TestGroup5() {
@@ -236,10 +252,14 @@ protected:
         CASE(K = 2, N =  randomIntBetween(1001,100000), allCrossingNoIntersect(1000000000));
         CASE(K = 2, N =  randomIntBetween(1001,100000), allCrossingAllOverlap(1000000000));
         CASE(K = 2, N =  randomIntBetween(1001,100000), allCrossingSmallInterval(1000000000));
+        CASE(K = 2, N =  randomIntBetween(1001,100000), allCrossingDivideIntoThree(1000000000));
+        CASE(K = 2, N =  randomIntBetween(1001,100000), allCrossingDivideIntoThreeShiftOne(1000000000));
         CASE(K = 2, N =  100000, allCrossingFullInterval(1000000000));
         CASE(K = 2, N =  100000, allCrossingNoIntersect(1000000000));
         CASE(K = 2, N =  100000, allCrossingAllOverlap(1000000000));
         CASE(K = 2, N =  100000, allCrossingSmallInterval(1000000000));
+        CASE(K = 2, N =  100000, allCrossingDivideIntoThree(1000000000));
+        CASE(K = 2, N =  100000, allCrossingDivideIntoThreeShiftOne(1000000000));
     }
 
 private:
@@ -325,6 +345,55 @@ private:
             if (randomIntBetween(0,1)) {
                 swap(x,y);
             }
+            TS.push_back((char)(fir + 'A'));
+            TE.push_back((char)(sec + 'A'));
+            PS.push_back(x);
+            PE.push_back(y);
+        }
+    }
+
+    void allCrossingDivideIntoThree(int mcd) {
+        TS.clear(); TE.clear();
+        PS.clear(); PE.clear();
+        for (int i = 0; i < N; ++i) {
+            int fir = randomIntBetween(0,1), sec = 1 - fir;
+            int x = randomIntBetween(0,2) * (mcd / 2);
+            int y = x;
+            TS.push_back((char)(fir + 'A'));
+            TE.push_back((char)(sec + 'A'));
+            PS.push_back(x);
+            PE.push_back(y);
+        }
+    }
+
+    //for example, if N = 9, and mcd = 1000, would be something like
+    //home: 0, 2, 4; 500, 502, 504; 998, 1000, 995
+    //office: 1, 3, 5; 501, 503, 505; 997 999 996
+    void allCrossingDivideIntoThreeShiftOne(int mcd) {
+        vector<pair<int,int> > ptr = {make_pair(0,0),make_pair(mcd/2,mcd/2),make_pair(mcd-1,mcd-1)};
+        TS.clear(); TE.clear();
+        PS.clear(); PE.clear();
+        for (int i = 0; i < N; ++i) {
+            int fir = randomIntBetween(0,1), sec = 1 - fir;
+            int group = randomIntBetween(0,2);
+            int x = 0;
+            if (group == 0) {
+                x = ptr[group].second;
+            } else if (group == 2) {
+                x = ptr[group].first;
+            } else if (group == 1) {
+                if (randomIntBetween(0,1)) {
+                    x = ptr[group].first;
+                } else {
+                    x = ptr[group].second;
+                }
+            }
+            int y = x + 1;
+            if (randomIntBetween(0,1)) {
+                swap(x,y);
+            }
+            ptr[group].first -= 2;
+            ptr[group].second += 2;
             TS.push_back((char)(fir + 'A'));
             TE.push_back((char)(sec + 'A'));
             PS.push_back(x);
