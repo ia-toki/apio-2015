@@ -1,0 +1,50 @@
+\documentclass[a4paper,11pt]{article}
+\title{Doge}
+\begin{document}
+\maketitle
+\section{Subtask 1}
+Due to the small constraint of this subtask, it is possible to do a breadth-first search, with the current positions of the doges as the state. From a state, there can be at most $M^3$ transitions, since each doge can either move left, right, or stay. The number of states is $M^{N+1}$, since each doge can either have the news ($N$ possible positions) or it does not have the news (it must be in its starting building). The complexity of this solution is $O(M^{N+4})$.
+\section{Subtask 2}
+Note that at for doge 1 to find the news, there must be a sequence of doges ${x_1, x_2, \ldots, x_k}$ such that doge $x_i$ got the news from doge $x_{i-1}$, $x_1 = 0$ as the first doge to get the news, and $x_k = 1$. By using this observation, we can reduce the state to only keep track of one doge.
+
+Now, we can optimize the BFS to only keep track of the position of the current doge, and the power of the current doge. The state becomes (position, power), and the number of vertices is at most $NM$. From each vertex, we can have two edges:
+\begin{itemize}
+    \item Move: Connect $(position, power)$ to $(position + power, power)$ and $(position - power, power)$.
+    \item Move and pass the news to another doge: Connect $(position, power)$ to $(position + power, new\_ power)$ and $(position - power, new\_ power)$
+\end{itemize}
+From each vertex, there can be at most two edges of the first type and $M$ edges of the second type. The total number of edges is $O(N^2M)$. Therefore, the complexity of this solution is $O(NM^2)$.
+
+\section{Subtask 3}
+We can optimize this further by transforming the problem to a weighted graph.
+If we consider a series of jump from one doge to another as one single edge, we can reduce the state to just $(doge)$. In other words, connect $doge1$ to $doge2$ with an edge of weight $w$, if $doge2$ can be reached by $doge1$ in $w$ jumps. In the worst-case scenario, the graph is complete with $O(M^2)$ edges. By running Dijkstra's algorithm on this graph, we get a $O(M^2 \log M)$ solution.
+\section{Subtask 4}
+The problem with the solution of Subtask 2 is that if there are $X$ doges with different powers in building $Y$, every jump that can reach $Y$ will need to connect with at least $X$ vertices. To reduce this number, we introduce a dummy entry vertex for each building. Every jump that can reach this vertex will connect to this dummy vertex with cost 1, and this dummy vertex will connect to every doges in the building with cost 0. In other words, if we write this new dummy vertex as $(position)$,
+\begin{itemize}
+    \item Connect $(position, power)$ to $(position + power, power)$ and $(position - power, power)$ with an edge of weight 1.
+    \item Connect $(position, power)$ to $(position + power)$ and $(position - power)$ with an edge of weight 1.
+    \item Connect $(position)$ to $(position, power)$ for each doge with power $power$ in $position$ with an edge of weight 0.
+\end{itemize}
+Now, the number of vertices is still the same ($NM$), but the number of edges is reduced to $N$ edges from $(position)$ vertices, and $2NM$ edges from $(position, power)$ vertices. The complexitiy is $O(NM)$.
+
+\section{Subtask 5}
+We still need to cut the number of vertices for this subtask. To do this, we combine the idea from subtask 3 and subtask 4:
+
+Create $(position, power)$ vertices only for $power$ $\leq \sqrt{N}$.
+From a $(position)$ vertex, we connect to $(position, power)$ vertex for doges with powers that are less than or equal to $\sqrt{N}$.
+If the power of the doge is more than $\sqrt{N}$, loop through the possible positions that this doge can jump to, either directly or indirectly, and connect to the entry vertex of those buildings.
+Now, the number of vertices is at most $O(M\sqrt{N})$.
+
+The number of edges can be analyzed as follows:
+\begin{itemize}
+
+    \item There can only be two edges from a $(position, power)$ vertex connecting it to another (position, power) vertex. The total number of these edges is at most $2N\sqrt{N}$.
+    \item There can be one edge from each $(position, power)$ vertex connecting it to a $(position)$ vertex. The total number of these edges is at most $N\sqrt{N}$.
+    \item The number of edges from a $(position)$ vertex to a $(position, power)$ vertex is at most $\sqrt{N}$ for each position, since there are only $\sqrt{N}$ different values of power it can connect to. The total number of these edges is at most $N\sqrt{N}$.
+    \item The number of edges from a $(position)$ vertex to another $(position)$ vertex is bounded by the number of jumps for each doge. Each doge with power greater than $\sqrt{N}$ can only jump at most $\sqrt{N}$ times. The total number of these edges is at most $M\sqrt{N}$.
+\end{itemize}
+
+Therefore, the number of edges is $O((M + N)\sqrt{N})$.
+
+Running Dijkstra's algorithm in this graph gives a $O((M + N)\sqrt{N} \log(M + N))$ solution.
+
+\end{document}
