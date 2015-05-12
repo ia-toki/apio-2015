@@ -1,0 +1,33 @@
+\documentclass[a4paper,11pt]{article}
+\title{Partition}
+\begin{document}
+\maketitle
+\section{Subtask 1}
+Constraint : $1\leq N \leq 20; 1 \leq A \leq B \leq N; 0 \leq Y_i \leq 1,000,000,000$\newline
+Due to the small N of this subtask, it is possible to do a brutal complete search. We can try whether to insert a "separator" between each consecutive. Among all those possible "separator" positions, we only consider those with more than or equal to $A$ and less than or equal to $B$ groups, and find the minimum OR-SUM. The complexity for this solution is $O(N2^N)$.
+
+\paragraph{The solutions for the next subtasks require an understanding of Dynamic Programming}
+\section{Subtask 2}
+Constraint : $1\leq N \leq 50; 1 \leq A \leq B \leq \min(20,N); 0 \leq Y_i \leq 10$\newline
+We would like to create a dynamic programming table with three parameter, $curpos$, $curOR$, and $curpartition$. \newline
+$dp[curpos][curOR][curpartition]$ will be $true$ if and only if there exists a partition of the first $curpos$ elements with $curpartition$ groups and the OR-sum is $curOR$. It can be computed by
+\[dp[curpos][curOR][curpartition] =\]
+\[\bigvee\limits_{i=curpos}^{N}dp[i+1][curOR | sum[curpos,i]][curpartition+1]\]
+where $sum[x,y]$ is the sum of the age of sclupture $x$ to $y$ inclusive. \newline
+After computing the dp table, we are finding the minimum number $X$ such that there exists $P$, $A \leq P \leq B$ where $dp[N][X][P]$ is true. Since the OR-SUM of any partition is less than the sum of all elements, we can loop for all possible values for $X$. $curOR$ can be as worse as $O(Y_iN)$. Therefore, the complexity for this solution is $O(NY_iNNN + NY_iN) = O(N^4Y_i)$
+
+\section{Subtask 3}
+Constraint : $1\leq N \leq 100; 1 = A \leq B \leq N; 0 \leq Y_i \leq 20$\newline
+$A = 1$ means we can try to use as few groups as possible for any fixed $curOR$ and $curpos$. We make a minor modification to our solution from subtask 2. We remove the third parameter, left with only $curpos$ and $curOR$. For this subtask, $dp[curpos][curOR]$ will return the fewest number of groups to make the partition of the first $curpos$ elements with the OR-sum is $curOR$. It can be computed by
+\[dp[curpos][curOR] = 1 + \min_{i=curpos}^{N}dp[i+1][curOR | sum[curpos,i]] \]
+After computing the dp table, we are finding the minimum number $X$ such that there exists $dp[N][X] \leq B$. The complexity for this solution is $O(NY_iNN + NY_i) = O(N^3Y_i)$
+
+\section{Subtask 4}
+Constraint : $1\leq N \leq 100; 1 \leq A \leq B \leq N; 0 \leq Y_i \leq 1,000,000,000$\newline
+TBA
+
+\section{Subtask 5}
+Constraint : $1\leq N \leq 2,000; 1 = A \leq B \leq N; 0 \leq Y_i \leq 1,000,000,000$\newline
+TBA
+
+\end{document}
