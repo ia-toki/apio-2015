@@ -20,14 +20,14 @@ After computing the dp table, we are finding the minimum number $X$ such that th
 Constraint : $1\leq N \leq 100; 1 = A \leq B \leq N; 0 \leq Y_i \leq 20$\newline
 $A = 1$ means we can try to use as few groups as possible for any fixed $curOR$ and $curpos$. We make a minor modification to our solution from subtask 2. We remove the third parameter, left with only $curpos$ and $curOR$. For this subtask, $dp[curpos][curOR]$ will return the fewest number of groups to make the partition of the first $curpos$ elements with the OR-sum is $curOR$. It can be computed by
 \[dp[curpos][curOR] = 1 + \min_{i=curpos}^{N}dp[i+1][curOR | sum[curpos,i]] \]
-After computing the dp table, we are finding the minimum number $X$ such that there exists $dp[N][X] \leq B$. The complexity for this solution is $O(NY_iNN + NY_i) = O(N^3Y_i)$
+After computing the dp table, we are finding the minimum number $X$ such that $dp[N][X] \leq B$. The complexity for this solution is $O(NY_iNN + NY_i) = O(N^3Y_i)$
 
 \section{Subtask 4}
 Constraint : $1\leq N \leq 100; 1 \leq A \leq B \leq N; 0 \leq Y_i \leq 1,000,000,000$\newline
-TBA
+Since we are looking for minimum OR-SUM, we can greedily choose the most significant bit of the OR-SUM to be zero, if it is possible. We iterate $k$ from $\log(Y_iN)$ to $0$. For any $k$, we try whether it is possible to set the $k$-th bit of the OR-SUM to be zero, regardless of the value of the bit in the less significant bit position. We can use the dynamic programming method explained in subtask 2, but we drop the $curOR$ parameter. The complexity for this solution is $O(\log(Y_iN)NNN) = O(N^3\log(Y_iN))$
 
 \section{Subtask 5}
 Constraint : $1\leq N \leq 2,000; 1 = A \leq B \leq N; 0 \leq Y_i \leq 1,000,000,000$\newline
-TBA
+We can solve this subtask by combining the idea from subtask 4 and subtask 3. From subtask 3, we can drop the $curpartition$ parameter by computing the minimum number of partition in the DP table instead. From subtask 4, we can drop the $curOR$ parameter. By combining both ideas, we can have a dp table where the parameter is only $curpos$. The complexity for this solution is $O(\log(Y_iN)NN) = O(N^2\log(Y_iN))$
 
 \end{document}
