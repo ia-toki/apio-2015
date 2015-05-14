@@ -1,0 +1,234 @@
+\documentclass[a4paper]{article}
+
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{mathtools}
+
+
+\newtheorem{algorithm_def}{Algorithm}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+
+%opening
+\title{Ashar Pacific Irvan Olympiad Editorial}
+
+\author{
+  Jahja, Irvan\\
+  \texttt{irvan@comp.nus.edu.sg}
+  \and
+  Fufu-chan\\
+  \texttt{fufufufufu@ui.edu}
+}
+
+\begin{document}
+
+\maketitle
+
+\section{Bridge}
+
+Suppose we build two bridges at position $L$ and $R$ (wlog $L < R$). For a given interval
+$(P_s, P_e)$ (again wlog $P_s < P_e$), how do we determine which bridge to use? We can only bridge $L$
+iff
+
+\begin{equation}
+  \label{dist}
+|P_s - L| + |P_e - L| < |P_s - R| + |P_e - R|
+\end{equation}
+
+(If they are equal, we can use either bridge).
+
+Using Equation~\ref{dist}, we will now prove the following
+
+\begin{lemma}
+\label{lem}
+  It is optimal to use the bridge at $L$ if
+  \begin{equation}
+    \label{eqlemma}
+    P_s + P_e < L+R
+  \end{equation}
+  And it is optimal to use the bridge at $R$ if
+  \begin{equation}
+    \label{eqlemma}
+    P_s + P_e > L+R
+  \end{equation}
+\end{lemma}
+
+Note that this does not imply the invese. That is, optimality of using bridge
+at $L$ or $R$ does not imply the equations.
+
+\begin{proof}
+
+To prove Lemma~\ref{lem}, we need to prove that we can derive
+Equation~\ref{dist} from Equation~\ref{eqlemma}. We do so case by case.
+Denote the interval $(P_s, P_e)$ with
+
+\begin{verbatim}
+|---------|
+\end{verbatim}
+
+\subsection{Case 1}
+
+\begin{verbatim}
+|---------| L R
+\end{verbatim}
+
+That is, we have $P_e \le L$.
+
+In this case, Equation~\ref{dist} expands to
+
+\begin{eqnarray*}
+  |P_s - L| + |P_e - L| &<& |P_s - R| + |P_e - R| \\
+  2L - (P_s + P_e) &<& 2R - (P_s - P_e) \\
+  2L &<& 2R
+\end{eqnarray*}
+
+Which is always true. So, we need to prove that in this case,
+$P_s + P_e < L+R$ always holds. Since we have $P_e \le L$:
+
+\begin{eqnarray*}
+  P_s + P_e &\le P_e + P_e & \text{(Since $P_s \le P_e$)} \\
+            &\le 2L & \text{(Since $P_e \le L$)} \\
+            &< L + R & \text{(Since $L < R$)}
+\end{eqnarray*}
+
+\subsection{Case 2}
+
+\begin{verbatim}
+L R |---------|
+\end{verbatim}
+
+That is, we have $P_s \ge R$. We prove similar to Case 1.
+Equation~\ref{dist} expands to
+
+\begin{eqnarray*}
+  |P_s - L| + |P_e - L| &<& |P_s - R| + |P_e - R| \\
+  (P_s + P_e) - 2L &<& (P_s - P_e) - 2R\\
+  2L &>& 2R
+\end{eqnarray*}
+
+Which is always false. So, we need to prove that in this case,
+$P_s + P_e < L+R$ never hold. Since we have $P_s \ge R$:
+
+\begin{eqnarray*}
+  P_s + P_e &\ge P_s + P_s & \text{(Since $P_s \le P_e$)} \\
+            &\ge 2R & \text{(Since $P_s \ge R$)} \\
+            &> L + R & \text{(Since $L < R$)}
+\end{eqnarray*}
+
+\subsection{Case 3}
+
+\begin{verbatim}
+   |---------|
+L       R
+\end{verbatim}
+
+Thus, we have $L \le P_s \le R \le P_e$.
+
+Equation~\ref{dist} expands to
+
+\begin{eqnarray*}
+  |P_s - L| + |P_e - L| &<& |P_s - R| + |P_e - R| \\
+  (P_s + P_e) - 2L &<& R - P_s + P_e - R \\
+  (P_s + P_e) - 2L &<& P_e - P_s \\
+  2P_s &<& 2L
+\end{eqnarray*}
+
+Which is always false. So, we need to prove that in this case,
+$P_s + P_e < L+R$ never hold:
+
+\begin{eqnarray*}
+  P_s + P_e &\ge L + P_e & \text{(Since $L \le P_s$)} \\
+            &\ge L + R & \text{(Since $R \le P_e$)}
+\end{eqnarray*}
+
+\subsection{Case 4}
+
+\begin{verbatim}
+   |---------|
+        L         R
+\end{verbatim}
+
+Thus, we have $P_s \le L \le P_e \le R$.
+
+Equation~\ref{dist} expands to
+
+\begin{eqnarray*}
+  |P_s - L| + |P_e - L| &<& |P_s - R| + |P_e - R| \\
+  L - P_s + P_e - L &<& 2R - P_s - P_e \\
+  2P_e &<& 2R
+\end{eqnarray*}
+
+Which is always true. So, we need to prove that in this case,
+$P_s + P_e < L+R$ always hold:
+
+\begin{eqnarray*}
+  P_s + P_e &\le L + P_e & \text{(Since $P_s \le L$)} \\
+            &\le L + R & \text{(Since $P_e \le R$)}
+\end{eqnarray*}
+
+\subsection{Case 5}
+
+\begin{verbatim}
+   |---------|
+      L   R
+\end{verbatim}
+
+Thus, we have $P_s \le L \le R \le P_e$.
+
+Equation~\ref{dist} expands to
+
+\begin{eqnarray*}
+  |P_s - L| + |P_e - L| &<& |P_s - R| + |P_e - R| \\
+  L - P_s + P_e - L &<& R - P_s + P_e - R \\
+  0 &<& 0
+\end{eqnarray*}
+
+Which is always false, and in particular, it implies that the distance
+of using either of the bridges is the same. Thus, using any of the two
+bridges is always optimal.
+
+\subsection{Case 6}
+
+\begin{verbatim}
+   |---------|
+L               R
+\end{verbatim}
+
+Thus, we have $L \le P_s \le P_e \le R$.
+
+From Equation~\ref{eqlemma}:
+\begin{eqnarray*}
+  P_s + P_e &<& L + R \\
+  2(P_s + P_e) &<& 2L + 2R \\
+  (P_s + P_e) - 2L &<& 2R - (P_s + P_e) \\
+  |P_s - L| + |P_e - L| &<& |P_s - R| + |P_e - R|
+\end{eqnarray*}
+
+Which is equation~\ref{dist}.
+
+\end{proof}
+
+\section{Bridge pt.2 }
+Thus, there exists a way to separate the intervals into those which should
+go to the left bridge and those which should go to the right bridge.
+Sort the intervals by $P_s + P_e$, and for every prefix of this sequence
+of intervals, try to find the optimal placement of the bridge.
+
+One way to do this in $O(N \log^2 N)$: we keep track of a data structure
+to count the cost of placing a bridge in each possible position (initially,
+all are zero). We add the bridges one by one. When we add a bridge $P_s, P_e$,
+we are actually adding to each position $x$, $|P_s - x|$ and $|P_e - x|$.
+$f(x) = |A - x|$, though, is convex, so the sum over all these convex
+functions is a convex function. So we can ternary search over the sum of
+these convex functions to find the minimum in $\log^2 (n)$ time.
+
+
+
+\end{document}
+
+
