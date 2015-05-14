@@ -1,14 +1,27 @@
-\documentclass{report}
-\title{APIO 2015 Problems}
+\documentclass[a4paper]{article}
 \usepackage[margin=1in]{geometry}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{2pt}
 \usepackage{graphicx}
 
-\begin{document}
-\maketitle
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
 
-\newpage
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{apio2015}
+	
+	\textsc{\huge Asia-Pacific Informatics Olympiad 2015}\\[0.5cm]
+	
+	\LARGE May 9, 2015\\[0.25cm]
+    \LARGE Hosted by Indonesia\\[3cm]
+    
+    \LARGE \bfseries PROBLEMSET\\[0.5cm]
+	
+\end{center}
+\end{titlepage}
+
 \begin{center}
 \section*{Bali Sculptures}
 Time limit: 1 s\\
@@ -66,21 +79,21 @@ A single line containing the minimum final beauty value.
 Partition the sculptures into 2 groups: (8 1 2) and (1 5 4). The sums are (11) and (10). The final beauty value is (11 OR 10) = 11.
 
 \subsection*{Subtasks}
-\subsubsection{Subtask 1 (9 points)}
+\subsubsection*{Subtask 1 (9 points)}
 \begin{itemize} \itemsep1pt \parskip0pt
 \item $1 \le N \le 20$
 \item $1 \le A \le B \le N$
 \item $0 \le Yi \le 1,000,000,000$
 \end{itemize}
 
-\subsubsection{Subtask 2 (16 points)}
+\subsubsection*{Subtask 2 (16 points)}
 \begin{itemize} \itemsep1pt \parskip0pt
 \item $1 \le N \le 50$
 \item $1 \le A \le B \le \min(20, N)$
 \item $0 \le Y_i \le 10$
 \end{itemize}
 
-\subsubsection{Subtask 3 (21 points)}
+\subsubsection*{Subtask 3 (21 points)}
 \begin{itemize} \itemsep1pt \parskip0pt
 \item $1 \le N \le 100$
 \item $A = 1$
@@ -88,14 +101,14 @@ Partition the sculptures into 2 groups: (8 1 2) and (1 5 4). The sums are (11) a
 \item $0 \le Y_i \le 20$
 \end{itemize}
 
-\subsubsection{Subtask 4 (25 points)}
+\subsubsection*{Subtask 4 (25 points)}
 \begin{itemize} \itemsep1pt \parskip0pt
 \item $1 \le N \le 100$
 \item $1 \le A \le B \le N$
 \item $0 \le Y_i \le 1,000,000,000$
 \end{itemize}
 
-\subsubsection{Subtask 5 (29 points)}
+\subsubsection*{Subtask 5 (29 points)}
 \begin{itemize} \itemsep1pt \parskip0pt
 \item $1 \le N \le 2,000$
 \item $A = 1$
@@ -160,35 +173,35 @@ For each subtask,
 \item $0 \le B_i < N$
 \end{itemize}
 
-\subsubsection{Subtask 1 (10 points)}
+\subsubsection*{Subtask 1 (10 points)}
 \begin{itemize} \itemsep1pt \parskip0pt
 \item $1 \le N \le 10$
 \item $1 \le P_i \le 10$
 \item $2 \le M \le 3$
 \end{itemize}
 
-\subsubsection{Subtask 2 (12 points)}
+\subsubsection*{Subtask 2 (12 points)}
 \begin{itemize} \itemsep1pt \parskip0pt
 \item $1 \le N \le 100$
 \item $1 \le P_i \le 100$
 \item $2 \le M \le 2,000$
 \end{itemize}
 
-\subsubsection{Subtask 3 (14 points)}
+\subsubsection*{Subtask 3 (14 points)}
 \begin{itemize} \itemsep1pt \parskip0pt
 \item $1 \le N \le 2,000$
 \item $1 \le P_i \le 2,000$
 \item $2 \le M \le 2,000$
 \end{itemize}
 
-\subsubsection{Subtask 4 (21 points)}
+\subsubsection*{Subtask 4 (21 points)}
 \begin{itemize} \itemsep1pt \parskip0pt
 \item $1 \le N \le 2,000$
 \item $1 \le P_i \le 2,000$
 \item $2 \le M \le 30,000$
 \end{itemize}
 
-\subsubsection{Subtask 5 (43 points)}
+\subsubsection*{Subtask 5 (43 points)}
 \begin{itemize} \itemsep1pt \parskip0pt
 \item $1 \le N \le 30,000$
 \item $1 \le P_i \le 30,000$
@@ -253,19 +266,19 @@ B 1 A 7
 This is the illustration for both sample inputs.
 
 \begin{center}
-\includegraphics{images/bridge_initial}
+\includegraphics{bridge/bridge_initial}
 \end{center}
 
 Here is one possible solution for sample input 1. The pink stripe segment denotes a bridge.
 
 \begin{center}
-\includegraphics{images/bridge_1}
+\includegraphics{bridge/bridge_1}
 \end{center}
 
 And this is a possible solution for sample input 2:
 
 \begin{center}
-\includegraphics{images/bridge_2}
+\includegraphics{bridge/bridge_2}
 \end{center}
 \subsection*{Subtasks}
 For each subtask,
@@ -275,31 +288,31 @@ For each subtask,
 \item More than one house or office (or combination of both) can be located in the same building.
 \end{itemize}
 
-\subsubsection{Subtask 1 (8 points)}
+\subsubsection*{Subtask 1 (8 points)}
 \begin{itemize} \itemsep1pt \parskip0pt
 \item $K = 1$
 \item $1 \le N \le 1,000$
 \end{itemize}
 
-\subsubsection{Subtask 2 (14 points)}
+\subsubsection*{Subtask 2 (14 points)}
 \begin{itemize} \itemsep1pt \parskip0pt
 \item $K = 1$
 \item $1 \le N \le 100,000$
 \end{itemize}
 
-\subsubsection{Subtask 3 (9 points)}
+\subsubsection*{Subtask 3 (9 points)}
 \begin{itemize} \itemsep1pt \parskip0pt
 \item $K = 2$
 \item $1 \le N \le 100$
 \end{itemize}
 
-\subsubsection{Subtask 4 (32 points)}
+\subsubsection*{Subtask 4 (32 points)}
 \begin{itemize} \itemsep1pt \parskip0pt
 \item $K = 2$
 \item $1 \le N \le 1,000$
 \end{itemize}
 
-\subsubsection{Subtask 5 (37 points)}
+\subsubsection*{Subtask 5 (37 points)}
 \begin{itemize} \itemsep1pt \parskip0pt
 \item $K = 2$
 \item $1 \le N \le 100,000$
