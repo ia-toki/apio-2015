@@ -223,6 +223,7 @@ protected:
 
 		CASE(N = 30000, M = 30000, prime());
         CASE(Worst(30000));
+        CASE(WorstQuadratic(30000));
         CASE(sqrtN(30000, 200, 600));
         CASE(sqrtN(30000, 200, 450));
         CASE(sqrtN(30000, 100, 350));
@@ -282,6 +283,19 @@ private:
     void Worst_AddLoc(set<pair<int, int>>& bads, int pos, int kMaxPow) {
         for (int j = 2; j < kMaxPow; j++)
             bads.insert(make_pair(j, pos%j));
+    }
+
+    void WorstQuadratic(int kMaxN) {
+        B.clear();
+        P.clear();
+        for (int i = 0; i < kMaxN; i++) {
+            B.push_back(i);
+            P.push_back(1);
+        }
+
+        B[1] = N-1;
+        B[2] = N-3;
+        P[2] = 2;
     }
 
     void Worst(int kMaxN) {
